@@ -21,7 +21,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-Router::connect('/main.js', array('controller' => 'scripts', 'action' => 'main'));
 Router::connect('/search', array('controller' => 'locations', 'action' => 'index'));
 Router::connect('/route', array('controller' => 'routes', 'action' => 'index'));
 Router::connect('/downloads/:country/:file',
