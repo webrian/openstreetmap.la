@@ -25,16 +25,20 @@ Router::connect('/search', array('controller' => 'locations', 'action' => 'index
 Router::connect('/route', array('controller' => 'routes', 'action' => 'index'));
 Router::connect('/downloads/:country/:file',
                 array('controller' => 'downloads', 'action' => 'main'),
-                array('file' => '[0-9a-zA-Z\.\-\_]+', 'country' => '[a-zA-Z]+')
+                array('country' => '[a-zA-Z]+', 'file' => '[0-9a-zA-Z\.\-\_]+')
 );
 Router::connect('/files/:country/:file',
                 array('controller' => 'downloads', 'action' => 'main'),
-                array('file' => '[a-zA-Z0-9\.\-\_]+')
+                array('country' => '[a-zA-Z]+', 'file' => '[a-zA-Z0-9\.\-\_]+')
 );
 Router::connect('/map',
                 array('controller' => 'sites', 'action' => 'main')
 );
 Router::connect('/downloads',
+                array('controller' => 'sites', 'action' => 'main', 'downloads')
+);
+// Just to preserve already published URL
+Router::connect('/files/cambodia',
                 array('controller' => 'sites', 'action' => 'main', 'downloads')
 );
 Router::connect('/edit',

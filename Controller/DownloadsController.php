@@ -38,7 +38,7 @@ class DownloadsController extends AppController {
                 'text' => "File does not exist: " . $downloadsDirectory . DS . $requestedFile
             );
             CakeLog::write("apache_error", $message);
-            throw new NotFoundException();
+            throw new NotFoundException("File not found.");
         }
 
         // Log a successful download
