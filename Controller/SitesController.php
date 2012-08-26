@@ -20,9 +20,9 @@ class SitesController extends AppController {
         }
 
         // Try to fetch suburls with a trailing slash and redirect them
-        if (preg_match("/[a-zA-Z]+\/$/", $this->request->here) > 0) {
+        /*if (preg_match("/[a-zA-Z]+\/$/", $this->request->here) > 0) {
             $this->redirect("/$tab", $tab);
-        }
+        }*/
 
         $geohash = new Geohash();
 

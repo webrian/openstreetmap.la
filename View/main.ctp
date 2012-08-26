@@ -10,23 +10,22 @@
         <!-- base library -->
         <link rel="stylesheet" type="text/css" href="/lib/ext-3.3.0/resources/css/ext-all-notheme.css"/>
         <link rel="stylesheet" type="text/css" href="/lib/ext-3.3.0/resources/css/xtheme-gray.css"/>
-        <link rel="stylesheet" href="lib/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="/lib/leaflet/dist/leaflet.css" />
         <!--[if lte IE 8]><link rel="stylesheet" href="lib/leaflet/dist/leaflet.ie.css" /><![endif]-->
-        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="/style.css"/>
 
         <!-- ** Javascript ** -->
         <!-- ExtJS library: base/adapter -->
-        <script type="text/javascript" src="lib/ext-3.3.0/adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="/lib/ext-3.3.0/adapter/ext/ext-base.js"></script>
 
         <!-- ExtJS library: all widgets -->
-        <script type="text/javascript" src="lib/ext-3.3.0/ext-all-osmla.js"></script>
+        <script type="text/javascript" src="/lib/ext-3.3.0/ext-all-osmla.js"></script>
 
-        <script src="lib/leaflet/dist/leaflet.js" type="text/javascript"></script>
+        <script src="/lib/leaflet/dist/leaflet.js" type="text/javascript"></script>
 
         <!-- page specific -->
         <script type="text/javascript">
 <?php
-
 echo "var initLang='$lang';";
 
 echo "var initCenter=new L.LatLng($lat, $lng);";
@@ -48,12 +47,12 @@ if (!empty($destCoords)) {
 } else {
     echo "var initDest=null;";
 }
-if (!empty($viaCoords) && count($viaCoords) > 0){
+if (!empty($viaCoords) && count($viaCoords) > 0) {
     echo "var initVias=[";
-    for($i = 0; $i < count($viaCoords); $i++) {
+    for ($i = 0; $i < count($viaCoords); $i++) {
         $viaCoord = $viaCoords[$i];
         echo "new L.LatLng($viaCoord[0], $viaCoord[1])";
-        if($i < (count($viaCoords)-1)){
+        if ($i < (count($viaCoords) - 1)) {
             echo ",";
         }
     }
@@ -62,10 +61,11 @@ if (!empty($viaCoords) && count($viaCoords) > 0){
     echo "var initVias=null;";
 }
 echo "\n";
-
+echo "Ext.namespace('Ext.ux');";
+echo "Ext.ux.activeTab = '$tab';\n";
 ?>
         </script>
-        <script type="text/javascript" src="main.js?q=<?php echo $tab ?>"></script>
+        <script type="text/javascript" src="/main.js"></script>
 
         <!-- google analytics -->
         <script type="text/javascript">
@@ -82,7 +82,7 @@ echo "\n";
     </head>
     <body>
         <div id="sidepanel-header" style="text-align: center; padding: 5px; padding-top: 10px;">
-            <img src="img/osmla.png" alt="OpenStreetMap Laos" height="118" width="118" /><br/>
+            <img src="/img/osmla.png" alt="OpenStreetMap Laos" height="118" width="118" /><br/>
             <h1>OpenStreetMap.la</h1>
             <div style="padding: 10px 0px 10px;">
                 The free wiki world map
@@ -122,7 +122,7 @@ echo "\n";
                 <h1>Downloads</h1>
                 <div class="content">
                     On this page OpenStreetMap map data in different
-                    file formats for Laos are provided. Since OpenStreetMap is a work
+                    file formats for Laos and Cambodia are provided. Since OpenStreetMap is a work
                     in progress made by volunteers the data may be dated or inclompete.
                     The data on this page has not been checked or verified by OpenStreetMap.la.
                 </div>
@@ -139,77 +139,73 @@ echo "\n";
                     or similar license to this one. 
                 </div>
 
-                <?php
-                // Laos files and download table
-                $files = array(
-                    array("laos.osm.pbf", "OSM Protobuf", "Complete database"),
-                    array("laos.osm.bz2", "OSM XML", "Complete database"),
-                    array("roads.shp.zip", "ESRI Shapefile", "Roads"),
-                    array("amenities.shp.zip", "ESRI Shapefile", "Amenities"),
-                    array("places.shp.zip", "ESRI Shapefile", "Places"),
-                    array("waterway_lines.shp.zip", "ESRI  Shapefile", "Waterways"),
-                    array("waterway_polygons.shp.zip", "ESRI Shapefile", "Waterbodies"),
-                    array("gmapsupp.img.zip", "<a class=\"external\" href=\"http://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin#Installing_the_map_onto_your_GPS\">Garmin Map</a>", "Routable GPS map"),
-                    array("pointsofinterest.kmz", "KMZ Google Earth", "Points of Interest"),
-                    array("pointsofinterest.gpx.zip", "GPX", "Points of Interest"));
+<?php
+// Laos files and download table
+$laos_files = array(
+    array("laos.osm.pbf", "OSM Protobuf", "Complete database"),
+    array("laos.osm.bz2", "OSM XML", "Complete database"),
+    array("roads.shp.zip", "ESRI Shapefile", "Roads"),
+    array("amenities.shp.zip", "ESRI Shapefile", "Amenities"),
+    array("places.shp.zip", "ESRI Shapefile", "Places"),
+    array("waterway_lines.shp.zip", "ESRI  Shapefile", "Waterways"),
+    array("waterway_polygons.shp.zip", "ESRI Shapefile", "Waterbodies"),
+    array("gmapsupp.img.zip", "<a class=\"external\" href=\"http://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin#Installing_the_map_onto_your_GPS\">Garmin Map</a>", "Routable GPS map"),
+    array("pointsofinterest.kmz", "KMZ Google Earth", "Points of Interest"),
+    array("pointsofinterest.gpx.zip", "GPX", "Points of Interest"));
 
-                echo " <div class=\"content\"><h2>Laos</h2><table width=\"100%\">";
-                echo "<tr><td>Content</td><td>Format</td><td>Download Size</td></tr>\n";
+fileList('Laos', $laos_files);
 
-                foreach ($files as $f) {
-                    echo "<tr><td><a href=\"files/$f[0]\">$f[2]</a></td><td>$f[1]</td><td>" . formatBytes(@filesize("files1/$f[0]")) . "</td></tr>\n";
-                }
+// Cambodia files and download table
+$cambodia_files = array(
+    array("cambodia.osm.pbf", "OSM Protobuf", "Complete database"),
+    array("cambodia.osm.bz2", "OSM XML", "Complete database"),
+    array("roads.shp.zip", "ESRI Shapefile", "Roads"),
+    array("amenities.shp.zip", "ESRI Shapefile", "Amenities"),
+    array("places.shp.zip", "ESRI Shapefile", "Places"),
+    array("waterway_lines.shp.zip", "ESRI  Shapefile", "Waterways"),
+    array("waterway_polygons.shp.zip", "ESRI Shapefile", "Waterbodies"),
+    array("gmapsupp.img.zip", "<a class=\"external\" href=\"http://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin#Installing_the_map_onto_your_GPS\">Garmin Map</a>", "Routable GPS map"),
+    array("pointsofinterest.kmz", "KMZ Google Earth", "Points of Interest"),
+    array("pointsofinterest.gpx.zip", "GPX", "Points of Interest"));
 
-                echo "</table></div>";
+fileList('Cambodia', $cambodia_files);
 
-                echo "<div class=\"content\">Last data update: ";
-                echo lastModified("files1/" . $files[0][0]);
-                echo "</div>";
+function fileList($country, $files) {
+    echo " <div class=\"content\"><h2>$country</h2><table width=\"100%\">";
+    echo "<tr><td>Content</td><td>Format</td><td>Download Size</td></tr>\n";
 
-                // Cambodia files and download table
-                $files = array(
-                    array("cambodia.osm.pbf", "OSM Protobuf", "Complete database"),
-                    array("cambodia.osm.bz2", "OSM XML", "Complete database"),
-                    array("roads.shp.zip", "ESRI Shapefile", "Roads"),
-                    array("amenities.shp.zip", "ESRI Shapefile", "Amenities"),
-                    array("places.shp.zip", "ESRI Shapefile", "Places"),
-                    array("waterway_lines.shp.zip", "ESRI  Shapefile", "Waterways"),
-                    array("waterway_polygons.shp.zip", "ESRI Shapefile", "Waterbodies"),
-                    array("gmapsupp.img.zip", "Garmin Image", "<a class=\"external\" href=\"http://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin#Installing_the_map_onto_your_GPS\">Routable GPS map</a>"),
-                    array("pointsofinterest.kmz", "KMZ Google Earth", "Points of Interest"),
-                    array("pointsofinterest.gpx.zip", "GPX", "Points of Interest"));
+    foreach ($files as $f) {
 
-                echo " <div class=\"content\"><h2>Cambodia</h2><table width=\"100%\">";
-                echo "<tr><td>Format</td><td>Content</td><td>Download Size</td></tr>\n";
+        echo "<tr><td><a href=\"/downloads/" . strtolower($country);
+        echo "/$f[0]\">$f[2]</a></td><td>$f[1]</td><td>";
+        $path = dirname(APP) . DS . "Data" . DS . $country;
+        echo formatBytes(@filesize($path . DS . $f[0])) . "</td></tr>\n";
+    }
 
-                foreach ($files as $f) {
+    echo "</table></div>";
 
-                    echo "<tr><td><a href=\"files1/cambodia/$f[0]\">$f[1]</a></td><td>$f[2]</td><td>" . formatBytes(@filesize("files1/cambodia/$f[0]")) . "</td></tr>\n";
-                }
+    echo "<div class=\"content\">Last data update: ";
+    echo lastModified($path . DS . $files[0][0]);
+    echo "</div>";
+}
 
-                echo "</table></div>";
+function formatBytes($bytes) {
+    if ($bytes < 1024)
+        return $bytes . ' B';
+    elseif ($bytes < 1048576)
+        return round($bytes / 1024, 2) . ' KB';
+    else
+        return round($bytes / 1048576, 2) . ' MB';
+}
 
-                echo "<div class=\"content\">Last data update: ";
-                echo lastModified("files1/cambodia/" . $files[0][0]);
-                echo "</div>";
-
-                function formatBytes($bytes) {
-                    if ($bytes < 1024)
-                        return $bytes . ' B';
-                    elseif ($bytes < 1048576)
-                        return round($bytes / 1024, 2) . ' KB';
-                    else
-                        return round($bytes / 1048576, 2) . ' MB';
-                }
-
-                function lastModified($file) {
-                    if (file_exists($file)) {
-                        return date("j. M Y", filemtime($file));
-                    } else {
-                        return "unknown";
-                    }
-                }
-                ?>
+function lastModified($file) {
+    if (file_exists($file)) {
+        return date("j. M Y", filemtime($file));
+    } else {
+        return "unknown";
+    }
+}
+?>
             </div>
         </div>
         <div id="about-tab" class="x-panel-mc">

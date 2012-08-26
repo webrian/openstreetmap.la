@@ -2,7 +2,7 @@
 
 class DownloadsController extends AppController {
 
-    public function main($file = Null) {
+    public function main($country = Null, $file = Null) {
 
         // Configure the custom apache like log file
         CakeLog::config('apache.log', array(
@@ -10,8 +10,11 @@ class DownloadsController extends AppController {
                     'path' => dirname(APP) . DS . "app" . DS . "tmp" . DS . "logs" . DS
                 ));
 
+        // Get the requested country
+        $requestedCountry = $this->request->params['country'];
+
         // The download directory
-        $downloadsDirectory = dirname(APP) . DS . "public_html" . DS . "files1" . DS;
+        $downloadsDirectory = dirname(APP) . DS . "Data" . DS . ucfirst($requestedCountry);
 
         // Get the request file
         $requestedFile = $this->request->params['file'];
@@ -21,7 +24,7 @@ class DownloadsController extends AppController {
         $filename = $parts[0];
         $suffix = $parts[count($requestedFile) - 1];
 
-        $filepath = $downloadsDirectory . $requestedFile;
+        $filepath = $downloadsDirectory . DS . $requestedFile;
 
         if (!file_exists($filepath)) {
             // Log an error attempt
@@ -32,7 +35,7 @@ class DownloadsController extends AppController {
                 'referer' => $this->request->referer(),
                 'status' => 401,
                 'filesize' => 0,
-                'text' => "File does not exist: $downloadsDirectory$requestedFile"
+                'text' => "File does not exist: " . $downloadsDirectory . DS . $requestedFile
             );
             CakeLog::write("apache_error", $message);
             throw new NotFoundException();
@@ -45,7 +48,7 @@ class DownloadsController extends AppController {
             'here' => $this->request->here,
             'referer' => $this->request->referer(),
             'status' => 200,
-            'filesize' => filesize($downloadsDirectory . $requestedFile)
+            'filesize' => filesize($downloadsDirectory . DS . $requestedFile)
         );
         CakeLog::write("apache_access", $message);
 
@@ -60,7 +63,7 @@ class DownloadsController extends AppController {
             'mimeType' => array(
                 $suffix => 'application/octet-stream'
             ),
-            'path' => $downloadsDirectory
+            'path' => $downloadsDirectory . DS
         );
 
         $this->set($params);

@@ -24,11 +24,11 @@
 Router::connect('/main.js', array('controller' => 'scripts', 'action' => 'main'));
 Router::connect('/search', array('controller' => 'locations', 'action' => 'index'));
 Router::connect('/route', array('controller' => 'routes', 'action' => 'index'));
-Router::connect('/downloads/:file',
+Router::connect('/downloads/:country/:file',
                 array('controller' => 'downloads', 'action' => 'main'),
-                array('file' => '[0-9a-zA-Z\.\-\_]+')
+                array('file' => '[0-9a-zA-Z\.\-\_]+', 'country' => '[a-zA-Z]+')
 );
-Router::connect('/files/:file',
+Router::connect('/files/:country/:file',
                 array('controller' => 'downloads', 'action' => 'main'),
                 array('file' => '[a-zA-Z0-9\.\-\_]+')
 );

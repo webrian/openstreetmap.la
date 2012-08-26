@@ -181,7 +181,7 @@ Ext.onReady(function(){
             var lang = "&lang=" + currentLang;
             window.location.href = "/?lat=" + c.lat + "&lon=" + c.lng + "&zoom=" + z + mLatLng + startHash + destHash + viaHash + lang;
         },
-        icon: 'img/actionPermaLink.png',
+        icon: '/img/actionPermaLink.png',
         listeners: {
             mouseover: function(button, evt){
                 statusControl.setText('Permanent link to current map view');
@@ -205,7 +205,7 @@ Ext.onReady(function(){
                 statusControl.setText('');
             }
         },
-        icon: 'img/lo.png',
+        icon: '/img/lo.png',
         pressed: currentLang == 'lo',
         toggleGroup: "languageToggleGroup"
     },{
@@ -223,7 +223,7 @@ Ext.onReady(function(){
                 statusControl.setText('');
             }
         },
-        icon: 'img/us.png',
+        icon: '/img/us.png',
         pressed: currentLang == 'en',
         toggleGroup: "languageToggleGroup"
     }];
@@ -273,7 +273,7 @@ Ext.onReady(function(){
         }],
         listeners: {
             afterrender: function(component){
-                component.setActiveTab('<?php echo $tab ?>-tabpanel');
+                component.setActiveTab(Ext.ux.activeTab + '-tabpanel');
             }
             /*tabchange: function(component, tab){
                 console.log(tab);
@@ -284,16 +284,16 @@ Ext.onReady(function(){
     });
 
     var StartIcon = L.Icon.extend({
-        iconUrl: 'img/startmarker.png'
+        iconUrl: '/img/startmarker.png'
     });
 
     var EndIcon = L.Icon.extend({
-        iconUrl: 'img/endmarker.png'
+        iconUrl: '/img/endmarker.png'
     });
 
     var ViaIcon = L.Icon.extend({
-        iconUrl: 'img/viamarker.png',
-        shadowUrl: 'img/viamarker-shadow.png',
+        iconUrl: '/img/viamarker.png',
+        shadowUrl: '/img/viamarker-shadow.png',
         iconSize: new L.Point(12, 12),
         shadowSize: new L.Point(12, 12),
         iconAnchor: new L.Point(6, 6),
