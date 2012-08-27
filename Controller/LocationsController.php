@@ -1,5 +1,7 @@
 <?php
 
+App::uses('Sanitize', 'Utility');
+
 include 'geohash.class.php';
 
 class LocationsController extends AppController {
@@ -11,7 +13,7 @@ class LocationsController extends AppController {
         
         if(isset($this->request->query['q'])) {
             // Get the search string
-            $search = pg_escape_string($this->request->query['q']);
+	    $search = Sanitize::clean($this->request->query['q']);
             
             // Query the database
             $data = $this->Location->find('all', array(
