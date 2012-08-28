@@ -108,11 +108,17 @@ class SitesController extends AppController {
             'here' => $this->request->here,
             'referer' => $this->request->referer(),
             'status' => 200,
-            'filesize' => " - "
+            'filesize' => 3266
         );
         CakeLog::write("apache_access", $message);
 
         $this->render('/main');
+    }
+
+    public function beforeRender(){
+    }
+
+    public function afterFilter(){
     }
 
 }
