@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="/lib/ext-3.3.0/resources/css/ext-all-notheme.css"/>
         <link rel="stylesheet" type="text/css" href="/lib/ext-3.3.0/resources/css/xtheme-gray.css"/>
         <link rel="stylesheet" href="/lib/leaflet/dist/leaflet.css" />
-        <!--[if lte IE 8]><link rel="stylesheet" href="lib/leaflet/dist/leaflet.ie.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="/lib/leaflet/dist/leaflet.ie.css" /><![endif]-->
         <link rel="stylesheet" type="text/css" href="/style.css"/>
 
         <!-- ** Javascript ** -->
@@ -66,19 +66,6 @@ echo "Ext.ux.activeTab = '$tab';\n";
 ?>
         </script>
         <script type="text/javascript" src="/main.js"></script>
-
-        <!-- google analytics -->
-        <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-24897786-1']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
     </head>
     <body>
         <div id="sidepanel-header" style="text-align: center; padding: 5px; padding-top: 10px;">
