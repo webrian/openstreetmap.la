@@ -111,8 +111,6 @@ class SitesController extends AppController {
             'filesize' => 3266
         );
         CakeLog::write("apache_access", $message);
-
-        $this->render('/main');
     }
 
     public function beforeRender(){
