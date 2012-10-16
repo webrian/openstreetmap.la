@@ -21,7 +21,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-Router::connect('/search', array('controller' => 'locations', 'action' => 'index'));
 Router::connect('/route', array('controller' => 'routes', 'action' => 'index'));
 Router::connect('/downloads/:country/:file',
                 array('controller' => 'downloads', 'action' => 'main'),
@@ -60,4 +59,4 @@ Router::connect('/', array('controller' => 'sites', 'action' => 'main'));
  * Load the CakePHP default routes. Remove this if you do not want to use
  * the built-in default routes.
  */
-//require CAKE . 'Config' . DS . 'routes.php';
+require CAKE . 'Config' . DS . 'routes.php';

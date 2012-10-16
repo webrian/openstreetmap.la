@@ -4,6 +4,28 @@ include 'geohash.class.php';
 
 class SitesController extends AppController {
 
+    /**
+     * Associative array of two-letter language keys to three-letter langague
+     * keys.
+     * @var array
+     */
+    private $_languages = array(
+        'lo' => 'lao',
+        'en' => 'eng'
+    );
+    private $_languageCookie = '__LANG__';
+    private $_cookieIsEncrypted = true;
+    private $_expiration = '30 Days';
+
+    public function beforeFilter() {
+
+        $lang = $this->_extractLanguage();
+        $this->set('lang', $lang);
+
+        $this->Session->write('Config.language', $this->_languages[$lang]);
+        Configure::write('Config.language', $this->Session->read('Config.language'));
+    }
+
     public function main($tab = 'map') {
 
         // Configure the custom apache like log file
@@ -18,11 +40,6 @@ class SitesController extends AppController {
         } else {
             throw new NotFoundException();
         }
-
-        // Try to fetch suburls with a trailing slash and redirect them
-        /*if (preg_match("/[a-zA-Z]+\/$/", $this->request->here) > 0) {
-            $this->redirect("/$tab", $tab);
-        }*/
 
         $geohash = new Geohash();
 
@@ -92,16 +109,7 @@ class SitesController extends AppController {
             $this->set('viaCoords', $viaCoords);
         }
 
-        // Check the language
-        $lang = 'lo';
-        if (isset($this->request->query['lang'])) {
-            if ($this->request->query['lang'] == 'en') {
-                $lang = 'en';
-            }
-        }
-        $this->set('lang', $lang);
-
-        // Log a successful download
+        // Log a successful access
         $message = array(
             'clientIp' => $this->request->clientIp(),
             'method' => $this->request->method(),
@@ -113,10 +121,41 @@ class SitesController extends AppController {
         CakeLog::write("apache_access", $message);
     }
 
-    public function beforeRender(){
-    }
+    /**
+     * Extract the requested language. The language is decided in the following
+     * order:
+     * 1. valid parameter lang set in GET request
+     * 2. valid parameter __LANG__ set in cookie
+     * 3. lao is preferred language
+     * @return String
+     */
+    private function _extractLanguage() {
+        // Check the language
+        $lang = 'lo';
 
-    public function afterFilter(){
+        // First check if the language parameter is set in the URL. The URL
+        // parameter has first priority.
+        if (isset($this->request->query['lang'])) {
+            $param = $this->request->query['lang'];
+            if (array_key_exists($param, $this->_languages)) {
+                $this->Cookie->write($this->_languageCookie, $param, $this->_cookieIsEncrypted, $this->_expiration);
+                return $param;
+            }
+        }
+
+        // Check if a cookie is set and set its value as language.
+        $cookieValue = $this->Cookie->read($this->_languageCookie);
+        if ($cookieValue != null) {
+            if (array_key_exists($cookieValue, $this->_languages)) {
+                $this->Cookie->write($this->_languageCookie, $cookieValue, $this->_cookieIsEncrypted, $this->_expiration);
+                return $cookieValue;
+            }
+        }
+
+        // If neither the lang parameter nor a cookie is set, set and return
+        // Lao as language.
+        $this->Cookie->write($this->_languageCookie, $lang, $this->_cookieIsEncrypted, $this->_expiration);
+        return $lang;
     }
 
 }

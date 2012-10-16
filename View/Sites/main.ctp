@@ -23,6 +23,8 @@
 
         <script src="/lib/leaflet-0.4.4/dist/leaflet.js" type="text/javascript"></script>
 
+        <script src="/lang" type="text/javascript"></script>
+
         <!-- page specific -->
         <script type="text/javascript">
 <?php
@@ -65,7 +67,7 @@ echo "Ext.namespace('Ext.ux');";
 echo "Ext.ux.activeTab = '$tab';\n";
 ?>
         </script>
-        <script type="text/javascript" src="/main.js"></script>
+        <script type="text/javascript" src="/main-devel.js"></script>
     </head>
     <body>
         <div id="sidepanel-header" style="text-align: center; padding: 5px; padding-top: 10px;">

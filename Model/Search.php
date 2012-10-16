@@ -1,4 +1,4 @@
 <?php
-class Location extends AppModel {
+class Search extends AppModel {
     public $useTable = 'search_placenames';
 }
