@@ -10,8 +10,8 @@ class SitesController extends AppController {
      * @var array
      */
     private $_languages = array(
-        'lo' => 'lao',
-        'en' => 'eng'
+        'lo' => 'lo_LA',
+        'en' => 'en_US'
     );
     private $_languageCookie = '__LANG__';
     private $_cookieIsEncrypted = true;
@@ -127,28 +127,29 @@ class SitesController extends AppController {
      * 1. valid parameter lang set in GET request
      * 2. valid parameter __LANG__ set in cookie
      * 3. lao is preferred language
-     * @return String
+     * @return String Two-letter language identifier
      */
     private function _extractLanguage() {
-        // Check the language
+        // Default lanuage is always Lao
         $lang = 'lo';
 
         // First check if the language parameter is set in the URL. The URL
         // parameter has first priority.
         if (isset($this->request->query['lang'])) {
             $param = $this->request->query['lang'];
+            // Check if the URL parameter is a valid language identifier
             if (array_key_exists($param, $this->_languages)) {
-                $this->Cookie->write($this->_languageCookie, $param, $this->_cookieIsEncrypted, $this->_expiration);
-                return $param;
+                // Set the language to the URL parameter
+                $lang = $param;
             }
-        }
-
-        // Check if a cookie is set and set its value as language.
-        $cookieValue = $this->Cookie->read($this->_languageCookie);
-        if ($cookieValue != null) {
+        } else if ($this->Cookie->read($this->_languageCookie) != null) {
+            // Check if a cookie is set and set its value as language. A Cookie
+            // has second priority
+            $cookieValue = $this->Cookie->read($this->_languageCookie);
+            // Check if the URL parameter is a valid language identifier
             if (array_key_exists($cookieValue, $this->_languages)) {
-                $this->Cookie->write($this->_languageCookie, $cookieValue, $this->_cookieIsEncrypted, $this->_expiration);
-                return $cookieValue;
+                // Set the language to the Cookie value
+                $lang = $cookieValue;
             }
         }
 
