@@ -58,6 +58,7 @@ class CustomFileLog implements CakeLogInterface {
     public function write($type, $message) {
         $debugTypes = array('notice', 'info', 'debug');
 
+        $output = '';
         if ($type == 'error' || $type == 'warning') {
             $filename = $this->_path . 'error.log';
         } elseif ($type == 'apache_error') {
@@ -65,7 +66,7 @@ class CustomFileLog implements CakeLogInterface {
             // Write an Apache like error message
             $clientIp = $message['clientIp'];
             $text = $message['text'];
-            $output = "[" . date('D M d H:m:s Y') . "] [error] [client $cientIp] $text\n";
+            $output = "[" . date('D M d H:m:s Y') . "] [error] [client $clientIp] $text\n";
         } elseif ($type == 'apache_access') {
             $filename = $this->_path . $type . '.log';
             // Get the necessary information to log correctly in Apache style

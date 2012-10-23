@@ -4,8 +4,17 @@ require 'geohash.class.php';
 
 class RoutesController extends AppController {
 
-    public function index() {
+    public function beforeFilter() {
         $this->response->type('json');
+    }
+
+    public function index() {
+
+        // Configure the custom apache like log file
+        CakeLog::config('apache.log', array(
+                    'engine' => 'CustomFileLog',
+                    'path' => dirname(APP) . DS . "app" . DS . "tmp" . DS . "logs" . DS
+                ));
 
         // Get the start, destination and via points as geohashs
         $geohash = new Geohash();
@@ -33,7 +42,18 @@ class RoutesController extends AppController {
         $content = @file_get_contents($requestUrl);
 
         if (empty($content)) {
-            throw new BadRequestException('');
+            // Log an error attempt
+            $message = array(
+                'clientIp' => $this->request->clientIp(),
+                'method' => $this->request->method(),
+                'here' => $this->request->here,
+                'referer' => $this->request->referer(),
+                'status' => 401,
+                'filesize' => 0,
+                'text' => "Server is not accessible."
+            );
+            CakeLog::write("apache_error", $message);
+            throw new BadRequestException('Server is not accessible.');
         }
 
         $resultJson = json_decode($content);
@@ -62,8 +82,16 @@ class RoutesController extends AppController {
 
         $this->set('data', $geoJson);
 
-        $this->render('/json');
+        // Log a successful found route
+        $message = array(
+            'clientIp' => $this->request->clientIp(),
+            'method' => $this->request->method(),
+            'here' => $this->request->here,
+            'referer' => $this->request->referer(),
+            'status' => 200,
+            'filesize' => strlen(json_encode($result))
+        );
+        CakeLog::write("apache_access", $message);
     }
-
 }
 ?>

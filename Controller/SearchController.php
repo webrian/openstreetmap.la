@@ -6,6 +6,10 @@ include 'geohash.class.php';
 
 class SearchController extends AppController {
 
+    public function beforeFilter() {
+        $this->response->type('json');
+    }
+
     public function index() {
 
         // Configure the custom apache like log file
@@ -13,8 +17,6 @@ class SearchController extends AppController {
                     'engine' => 'CustomFileLog',
                     'path' => dirname(APP) . DS . "app" . DS . "tmp" . DS . "logs" . DS
                 ));
-
-        $this->response->type('json');
 
         $result = array();
 
@@ -45,7 +47,7 @@ class SearchController extends AppController {
 
         $this->set('data', $result);
 
-        // Log a successful download
+        // Log a successful place search
         $message = array(
             'clientIp' => $this->request->clientIp(),
             'method' => $this->request->method(),
