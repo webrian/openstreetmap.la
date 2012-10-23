@@ -4,6 +4,8 @@ include 'geohash.class.php';
 
 class SitesController extends AppController {
 
+    //public $components = array('RequestHandler');
+
     /**
      * Associative array of two-letter language keys to three-letter langague
      * keys.
@@ -24,6 +26,14 @@ class SitesController extends AppController {
 
         $this->Session->write('Config.language', $this->_languages[$lang]);
         Configure::write('Config.language', $this->Session->read('Config.language'));
+
+        // Set the cookie name
+        $this->Cookie->name = '_osm_la';
+
+        // Try to extract the browser
+        //if($this->RequestHandler->isMobile()){
+        //$this->viewPath = 'Mobile';
+        //}
     }
 
     public function main($tab = 'map') {
@@ -43,10 +53,27 @@ class SitesController extends AppController {
 
         $geohash = new Geohash();
 
-        // Set the standard values
-        $lat = 18.25;
-        $lng = 103.75;
-        $zoom = 6;
+        // Checks if a Cookie is set. Expects whitespace separated longitude
+        // latitude and zoom level.
+        $initLocations = explode(" ", $this->Cookie->read('__LOCATION__'));
+
+        // If a Cookie is set, take the coordinates from the cookie, else
+        // set some default values
+        if (isset($initLocations[0]) && $initLocations[0] != NULL) {
+            $lng = $initLocations[0];
+        } else {
+            $lng = 103.75;
+        }
+        if (isset($initLocations[1]) && $initLocations[1] != NULL) {
+            $lat = $initLocations[1];
+        } else {
+            $lat = 18.25;
+        }
+        if (isset($initLocations[2]) && $initLocations[2] != NULL) {
+            $zoom = $initLocations[2];
+        } else {
+            $zoom = 6;
+        }
 
         // Check first if marker position is set but no center coordinates
         if (isset($this->request->query['mlat']) && !isset($this->request->query['lat'])) {
