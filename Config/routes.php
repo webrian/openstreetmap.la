@@ -21,7 +21,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-Router::connect('/route', array('controller' => 'routes', 'action' => 'index'));
 Router::connect('/downloads/:country/:file',
                 array('controller' => 'downloads', 'action' => 'main'),
                 array('country' => '[a-zA-Z]+', 'file' => '[0-9a-zA-Z\.\-\_]+')

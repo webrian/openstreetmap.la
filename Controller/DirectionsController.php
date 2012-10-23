@@ -2,7 +2,7 @@
 
 require 'geohash.class.php';
 
-class RoutesController extends AppController {
+class DirectionsController extends AppController {
 
     public function beforeFilter() {
         $this->response->type('json');
