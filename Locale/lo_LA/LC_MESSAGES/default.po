@@ -1,0 +1,194 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openstreetmap.la\n"
+"POT-Creation-Date: 2012-10-23 07:00+0200\n"
+"PO-Revision-Date: 2012-10-23 07:01+0100\n"
+"Last-Translator: Adrian Weber <webrian@openstreetmap.la>\n"
+"Language-Team: Adrian Weber <webrian@openstreetmap.la>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Poedit-Language: Lao\n"
+"X-Poedit-Country: LAO PEOPLE'S DEMOCRATIC REPUBLIC\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SearchPath-0: ../../..\n"
+
+#: Controller/LangController.php:16
+msgid "Map"
+msgstr "ແຜນທີ່"
+
+#: Controller/LangController.php:17
+msgid "Edit"
+msgstr ""
+
+#: Controller/LangController.php:18
+#: View/Sites/main.ctp:101
+msgid "Downloads"
+msgstr "ດາວໂຫຼດ"
+
+#: Controller/LangController.php:19
+msgid "About this page"
+msgstr ""
+
+#: Controller/LangController.php:21
+msgid "Get directions"
+msgstr ""
+
+#: Controller/LangController.php:22
+msgid "Search village, hotel, restaurant, shop, etc."
+msgstr ""
+
+#: Controller/LangController.php:23
+msgid "Clear"
+msgstr ""
+
+#: Controller/LangController.php:24
+msgid "Search village, point of interest, etc."
+msgstr ""
+
+#: Controller/LangController.php:25
+msgid "Distance"
+msgstr ""
+
+#: Controller/LangController.php:26
+msgid "{0} km"
+msgstr ""
+
+#: Controller/LangController.php:27
+msgid "Duration"
+msgstr ""
+
+#: Controller/LangController.php:28
+msgid "{1} h {2} mins"
+msgstr ""
+
+#: Controller/LangController.php:29
+msgid "Add start"
+msgstr ""
+
+#: Controller/LangController.php:30
+msgid "Double click to remove"
+msgstr ""
+
+#: Controller/LangController.php:31
+msgid "No route found"
+msgstr ""
+
+#: Controller/LangController.php:32
+msgid "Server is currently unreachable or its answer is invalid."
+msgstr ""
+
+#: Controller/LangController.php:33
+msgid "Not found"
+msgstr ""
+
+#: Controller/LangController.php:34
+msgid "Click to add new via point"
+msgstr ""
+
+#: Controller/LangController.php:36
+msgid "Add destination"
+msgstr ""
+
+#: Controller/LangController.php:37
+msgid "Drag to change route or double click to remove"
+msgstr ""
+
+#: Controller/LangController.php:38
+msgid "Loading..."
+msgstr ""
+
+#: Controller/LangController.php:40
+msgid "Lao"
+msgstr "ພາສາລາວ"
+
+#: Controller/LangController.php:41
+msgid "English"
+msgstr "ພາສາອັງກິດ"
+
+#: Controller/LangController.php:42
+msgid "Permanent link to current map view"
+msgstr ""
+
+#: Controller/LangController.php:44
+msgid "edit the map"
+msgstr ""
+
+#: View/Sites/main.ctp:7;74
+msgid "OpenStreetMap Laos"
+msgstr "OpenStreetMap  ລາວ"
+
+#: View/Sites/main.ctp:77
+msgid "The free wiki world map"
+msgstr ""
+
+#: View/Sites/main.ctp:92
+msgid "Edit the map"
+msgstr ""
+
+#: View/Sites/main.ctp:108;109;123;124
+msgid "Complete database"
+msgstr ""
+
+#: View/Sites/main.ctp:110;125
+msgid "Roads"
+msgstr ""
+
+#: View/Sites/main.ctp:111;126
+msgid "Amenities"
+msgstr ""
+
+#: View/Sites/main.ctp:112;127
+msgid "Places"
+msgstr ""
+
+#: View/Sites/main.ctp:113;128
+msgid "Waterways"
+msgstr ""
+
+#: View/Sites/main.ctp:114;129
+msgid "Waterbodies"
+msgstr ""
+
+#: View/Sites/main.ctp:115;130
+msgid "Routable GPS map"
+msgstr ""
+
+#: View/Sites/main.ctp:116;117;131;132
+msgid "Points of Interest"
+msgstr ""
+
+#: View/Sites/main.ctp:119
+msgid "Laos"
+msgstr "ປະເທດລາວ"
+
+#: View/Sites/main.ctp:134
+msgid "Cambodia"
+msgstr "ປະເທດກຳປູເຈຍ"
+
+#: View/Sites/main.ctp:138
+msgid "Content"
+msgstr ""
+
+#: View/Sites/main.ctp:138
+msgid "Download Size"
+msgstr ""
+
+#: View/Sites/main.ctp:150
+msgid "Last data update"
+msgstr ""
+
+#: View/Sites/main.ctp:168
+msgid "unknown"
+msgstr ""
+
+#: View/Sites/main.ctp:176
+msgid "About OpenStreetMap.la"
+msgstr ""
+

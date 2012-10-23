@@ -4,7 +4,7 @@ App::uses('Sanitize', 'Utility');
 
 include 'geohash.class.php';
 
-class LocationsController extends AppController {
+class SearchController extends AppController {
 
     public function index() {
 
@@ -23,8 +23,8 @@ class LocationsController extends AppController {
             $search = Sanitize::clean($this->request->query['q']);
 
             // Query the database
-            $data = $this->Location->find('all', array(
-                        'conditions' => array("Location.name ~* '$search'"),
+            $data = $this->Search->find('all', array(
+                        'conditions' => array("Search.name ~* '$search'"),
                         'limit' => 12
                     ));
 
@@ -37,7 +37,7 @@ class LocationsController extends AppController {
 
             foreach ($data as $tuple) {
 
-                $row = $tuple['Location'];
+                $row = $tuple['Search'];
                 $hash = $geohash->encode($row['lat'], $row['lon']);
                 array_push($result['data'], array('name' => $row['name'], 'hash' => $hash, 'feature' => $row['feature']));
             }
@@ -55,8 +55,6 @@ class LocationsController extends AppController {
             'filesize' => strlen(json_encode($result))
         );
         CakeLog::write("apache_access", $message);
-
-        $this->render('/json');
     }
 
 }

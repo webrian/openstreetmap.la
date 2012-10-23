@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="google-site-verification" content="cXvQfuOySAHBWbH1EvKsUGZk5S7_nU2f_lcG2rqZrr0" />
-        <title>OpenStreetMap ລາວ</title>
+        <title><?php echo __('OpenStreetMap Laos'); ?></title>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <!-- ** CSS ** -->
         <!-- base library -->
@@ -22,6 +22,8 @@
         <script type="text/javascript" src="/lib/ext-3.3.0/ext-all-osmla.js"></script>
 
         <script src="/lib/leaflet-0.4.4/dist/leaflet.js" type="text/javascript"></script>
+
+        <script src="/lang" type="text/javascript"></script>
 
         <!-- page specific -->
         <script type="text/javascript">
@@ -69,10 +71,10 @@ echo "Ext.ux.activeTab = '$tab';\n";
     </head>
     <body>
         <div id="sidepanel-header" style="text-align: center; padding: 5px; padding-top: 10px;">
-            <img src="/img/osmla.png" alt="OpenStreetMap Laos" height="118" width="118" /><br/>
+            <img src="/img/osmla.png" alt="<?php echo __('OpenStreetMap Laos'); ?>" height="118" width="118" /><br/>
             <h1>OpenStreetMap.la</h1>
             <div style="padding: 10px 0px 10px;">
-                The free wiki world map
+                <?php echo __('The free wiki world map'); ?>
             </div>
         </div>
         <div id="route-summary-panel" style="padding: 5px;">
@@ -87,140 +89,95 @@ echo "Ext.ux.activeTab = '$tab';\n";
         </div>
         <div id="edit-tab" class="x-panel-mc">
             <div class="main-tab">
-                <h1>Edit the map</h1>
-                <div class="content">
-                    Help improve the map! If you find inaccuracies, missing roads
-                    or points of interest,
-                </div>
-                <div id="edit-link" class="content">
-                    edit the map
-                </div>
-                <div class="content">
-                    on the main page openstreetmap.org using the
-                    <a class="external" href="http://wiki.openstreetmap.org/wiki/Potlatch">Potlatch</a> editor.
-                </div>
-                <div class="content">
-                    <b>Note:</b> Requires a login from openstreetmap.org.
-                </div>
+                <h1><?php echo __("Edit the map"); ?></h1>
+                <?php
+                // Include the text about how to edit the map
+                echo $this->element("Sites/" . Configure::read('Config.language') . "/edit");
+                ?>
             </div>
         </div>
         <div id="downloads-tab" class="x-panel-mc">
             <div class="main-tab">
-                <h1>Downloads</h1>
-                <div class="content">
-                    On this page OpenStreetMap map data in different
-                    file formats for Laos and Cambodia are provided. Since OpenStreetMap is a work
-                    in progress made by volunteers the data may be dated or inclompete.
-                    The data on this page has not been checked or verified by OpenStreetMap.la.
-                </div>
-                <div class="content">
-                    Other file formats or data extracts can be provided on
-                    request. Please contact info <i>at</i> openstreetmap.la
-                </div>
-                <div class="content">
-                    All these files are licensed under the terms of the
-                    <a href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution Share-Alike 2.0</a>
-                    license. If you use these data please attribute the OpenStreetMap
-                    contributors by including a link to www.openstreetmap.org. If you alter, transform,
-                    or build upon this work, you may distribute the resulting work only under the same
-                    or similar license to this one. 
-                </div>
+                <h1><?php echo __('Downloads'); ?></h1>
+                <?php
+                // Include the introductory text for the downloads
+                echo $this->element("Sites/" . Configure::read('Config.language') . "/downloads");
 
-<?php
-// Laos files and download table
-$laos_files = array(
-    array("laos.osm.pbf", "OSM Protobuf", "Complete database"),
-    array("laos.osm.bz2", "OSM XML", "Complete database"),
-    array("roads.shp.zip", "ESRI Shapefile", "Roads"),
-    array("amenities.shp.zip", "ESRI Shapefile", "Amenities"),
-    array("places.shp.zip", "ESRI Shapefile", "Places"),
-    array("waterway_lines.shp.zip", "ESRI  Shapefile", "Waterways"),
-    array("waterway_polygons.shp.zip", "ESRI Shapefile", "Waterbodies"),
-    array("gmapsupp.img.zip", "<a class=\"external\" href=\"http://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin#Installing_the_map_onto_your_GPS\">Garmin Map</a>", "Routable GPS map"),
-    array("pointsofinterest.kmz", "KMZ Google Earth", "Points of Interest"),
-    array("pointsofinterest.gpx.zip", "GPX", "Points of Interest"));
+                // Laos files and download table
+                $laos_files = array(
+                    array("laos.osm.pbf", "OSM Protobuf", __("Complete database")),
+                    array("laos.osm.bz2", "OSM XML", __("Complete database")),
+                    array("roads.shp.zip", "ESRI Shapefile", __("Roads")),
+                    array("amenities.shp.zip", "ESRI Shapefile", __("Amenities")),
+                    array("places.shp.zip", "ESRI Shapefile", __("Places")),
+                    array("waterway_lines.shp.zip", "ESRI  Shapefile", __("Waterways")),
+                    array("waterway_polygons.shp.zip", "ESRI Shapefile", __("Waterbodies")),
+                    array("gmapsupp.img.zip", "<a class=\"external\" href=\"http://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin#Installing_the_map_onto_your_GPS\">Garmin Map</a>", __("Routable GPS map")),
+                    array("pointsofinterest.kmz", "KMZ Google Earth", __("Points of Interest")),
+                    array("pointsofinterest.gpx.zip", "GPX", __("Points of Interest")));
 
-fileList('Laos', $laos_files);
+                fileList(__('Laos'), $laos_files, 'Laos');
 
-// Cambodia files and download table
-$cambodia_files = array(
-    array("cambodia.osm.pbf", "OSM Protobuf", "Complete database"),
-    array("cambodia.osm.bz2", "OSM XML", "Complete database"),
-    array("roads.shp.zip", "ESRI Shapefile", "Roads"),
-    array("amenities.shp.zip", "ESRI Shapefile", "Amenities"),
-    array("places.shp.zip", "ESRI Shapefile", "Places"),
-    array("waterway_lines.shp.zip", "ESRI  Shapefile", "Waterways"),
-    array("waterway_polygons.shp.zip", "ESRI Shapefile", "Waterbodies"),
-    array("gmapsupp.img.zip", "<a class=\"external\" href=\"http://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin#Installing_the_map_onto_your_GPS\">Garmin Map</a>", "Routable GPS map"),
-    array("pointsofinterest.kmz", "KMZ Google Earth", "Points of Interest"),
-    array("pointsofinterest.gpx.zip", "GPX", "Points of Interest"));
+                // Cambodia files and download table
+                $cambodia_files = array(
+                    array("cambodia.osm.pbf", "OSM Protobuf", __("Complete database")),
+                    array("cambodia.osm.bz2", "OSM XML", __("Complete database")),
+                    array("roads.shp.zip", "ESRI Shapefile", __("Roads")),
+                    array("amenities.shp.zip", "ESRI Shapefile", __("Amenities")),
+                    array("places.shp.zip", "ESRI Shapefile", __("Places")),
+                    array("waterway_lines.shp.zip", "ESRI  Shapefile", __("Waterways")),
+                    array("waterway_polygons.shp.zip", "ESRI Shapefile", __("Waterbodies")),
+                    array("gmapsupp.img.zip", "<a class=\"external\" href=\"http://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin#Installing_the_map_onto_your_GPS\">Garmin Map</a>", __("Routable GPS map")),
+                    array("pointsofinterest.kmz", "KMZ Google Earth", __("Points of Interest")),
+                    array("pointsofinterest.gpx.zip", "GPX", __("Points of Interest")));
 
-fileList('Cambodia', $cambodia_files);
+                fileList(__('Cambodia'), $cambodia_files, 'Cambodia');
 
-function fileList($country, $files) {
-    echo " <div class=\"content\"><h2>$country</h2><table width=\"100%\">";
-    echo "<tr><td>Content</td><td>Format</td><td>Download Size</td></tr>\n";
+                function fileList($country, $files, $downloadDirectory) {
+                    echo " <div class=\"content\"><h2>$country</h2><table width=\"100%\">";
+                    echo "<tr><td>" . __('Content') . "</td><td>Format</td><td>" . __('Download Size') . "</td></tr>\n";
 
-    foreach ($files as $f) {
+                    foreach ($files as $f) {
 
-        echo "<tr><td><a href=\"/downloads/" . strtolower($country);
-        echo "/$f[0]\">$f[2]</a></td><td>$f[1]</td><td>";
-        $path = dirname(APP) . DS . "Data" . DS . $country;
-        echo formatBytes(@filesize($path . DS . $f[0])) . "</td></tr>\n";
-    }
+                        echo "<tr><td><a href=\"/downloads/" . strtolower($downloadDirectory);
+                        echo "/$f[0]\">$f[2]</a></td><td>$f[1]</td><td>";
+                        $path = dirname(APP) . DS . "Data" . DS . $downloadDirectory;
+                        echo formatBytes(@filesize($path . DS . $f[0])) . "</td></tr>\n";
+                    }
 
-    echo "</table></div>";
+                    echo "</table></div>";
 
-    echo "<div class=\"content\">Last data update: ";
-    echo lastModified($path . DS . $files[0][0]);
-    echo "</div>";
-}
+                    echo "<div class=\"content\">" . __('Last data update') . ": ";
+                    echo lastModified($path . DS . $files[0][0]);
+                    echo "</div>";
+                }
 
-function formatBytes($bytes) {
-    if ($bytes < 1024)
-        return $bytes . ' B';
-    elseif ($bytes < 1048576)
-        return round($bytes / 1024, 2) . ' KB';
-    else
-        return round($bytes / 1048576, 2) . ' MB';
-}
+                function formatBytes($bytes) {
+                    if ($bytes < 1024)
+                        return $bytes . ' B';
+                    elseif ($bytes < 1048576)
+                        return round($bytes / 1024, 2) . ' KB';
+                    else
+                        return round($bytes / 1048576, 2) . ' MB';
+                }
 
-function lastModified($file) {
-    if (file_exists($file)) {
-        return date("j. M Y", filemtime($file));
-    } else {
-        return "unknown";
-    }
-}
-?>
+                function lastModified($file) {
+                    if (file_exists($file)) {
+                        return date("j. M Y", filemtime($file));
+                    } else {
+                        return __("unknown");
+                    }
+                }
+                ?>
             </div>
         </div>
         <div id="about-tab" class="x-panel-mc">
             <div class="main-tab">
-                <h1>About OpenStreetMap.la</h1>
-                <div class="content">
-                    OpenStreetMap ແມ່ນລະບົບແຜນທີ່ຂອງທົ່ວໂລກ ທີ່ສາມາດນຳໃຊ້ໄດ້ ຟຣີ ແລະ ສາມາດແກ້ໄຂໄດ້ ມັນໄດ້ຖືກສ້າງຂຶ້ນໂດຍອາສາສະຫມັກແບບທ່ານ
-        	OpenStreetMap ແມ່ນອານຸຍາດໃຫ້ທ່ານ ເບິ່ງ, ແກ້ໄຂ ແລະ ນຳໃຊ້ ຂໍ້ມູນທາງພູມສາດ ໃນຮູບແບບລວມສູນ ຈາກທຸກໆບ່ອນໃນໂລກ
-			ສຳລັບເວັບໄຊ້ແຫ່ງນີ້ ແມ່ນນຳສະເຫນີແຜນທີ່ ຂອງປະເທດລາວ ເປັນທັງ ພາສາລາວ ແລະ ອັງກິດ ພ້ອມນັ້ນຍັງໃຫ້ທ່ານສາມາດ ດາວໂຫລດໄຟລຂໍ້ມູນໃນຮູບແບບຕ່າງໆໄດ້ອີກ
-			ທ່ານສາມາດຫາຂໍ້ມູນເພິ່ມເຕີມກ່ຽວກັບ OpenStreetMap ແລະ ວິທີການເຂົ້າຮ່ວມເປັນຜູ້ສ້າງຂໍ້ມູນໄດ້ທີ່ 
-                    <a class="external" href="http://wiki.openstreetmap.org/wiki/Main_Page">OpenStreetMap Wiki</a>.
-                </div>
-                <div class="content">
-                    OpenStreetMap is a free editable map of the whole world. It
-                    is made by people like you.
-                    OpenStreetMap allows you to view, edit and use geographical
-                    data in a collaborative way from anywhere on Earth.
-                    This web page provides maps in Lao and English language as
-                    well as downloads in different file formats.
-                    Please find more information about OpenStreetMap and how to join on the
-                    <a class="external" href="http://wiki.openstreetmap.org/wiki/Main_Page">OpenStreetMap Wiki</a>.
-                </div>
-                <div class="content">
-                    OpenStreetMap.la is kindly hosted by
-                    <a class="external" href="http://www.laowebhosting.com/">
-                        Lao-Webhosting
-                    </a>.
-                </div>
+                <h1><?php echo __("About OpenStreetMap.la"); ?></h1>
+                <?php
+                // Include the about text
+                echo $this->element("Sites/" . Configure::read('Config.language') . "/about");
+                ?>
                 <div class="content">
                     <a href="http://validator.w3.org/check?uri=referer">
                         <img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" />
