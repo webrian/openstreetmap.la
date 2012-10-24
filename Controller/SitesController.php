@@ -3,7 +3,6 @@
 include 'geohash.class.php';
 
 class SitesController extends AppController {
-
     //public $components = array('RequestHandler');
 
     /**
@@ -16,7 +15,7 @@ class SitesController extends AppController {
         'en' => 'en_US'
     );
     private $_languageCookie = '__LANG__';
-    private $_cookieIsEncrypted = true;
+    private $_cookieIsEncrypted = false;
     private $_expiration = '30 Days';
 
     public function beforeFilter() {
@@ -26,9 +25,6 @@ class SitesController extends AppController {
 
         $this->Session->write('Config.language', $this->_languages[$lang]);
         Configure::write('Config.language', $this->Session->read('Config.language'));
-
-        // Set the cookie name
-        $this->Cookie->name = '_osm_la';
 
         // Try to extract the browser
         //if($this->RequestHandler->isMobile()){
@@ -159,6 +155,9 @@ class SitesController extends AppController {
     private function _extractLanguage() {
         // Default lanuage is always Lao
         $lang = 'lo';
+
+        // Set the cookie name
+        $this->Cookie->name = '_osm_la';
 
         // First check if the language parameter is set in the URL. The URL
         // parameter has first priority.

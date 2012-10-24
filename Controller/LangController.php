@@ -41,7 +41,9 @@ class LangController extends AppController {
             'English' => __('English'),
             'Permanent link to current map view' => __('Permanent link to current map view'),
             // Main content
-            'edit the map' => __('edit the map')
+            'edit the map' => __('edit the map'),
+            'Link' => __('Link'),
+            'Language' => __('Language')
         );
 
         // using getKey
