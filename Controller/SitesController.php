@@ -14,6 +14,7 @@ class SitesController extends AppController {
         'lo' => 'lo_LA',
         'en' => 'en_US'
     );
+    private $_languageCode = null;
     private $_languageCookie = '__LANG__';
     private $_cookieIsEncrypted = false;
     private $_expiration = '30 Days';
@@ -24,6 +25,7 @@ class SitesController extends AppController {
         $this->set('lang', $lang);
 
         $this->Session->write('Config.language', $this->_languages[$lang]);
+        $this->_languageCode = $lang;
         Configure::write('Config.language', $this->Session->read('Config.language'));
 
         // Try to extract the browser
@@ -132,11 +134,22 @@ class SitesController extends AppController {
             $this->set('viaCoords', $viaCoords);
         }
 
+        // Get the current url
+        $hereUrl = $this->request->here;
+
+        // Append a slash at the end of the current url if it does not end with
+        // one.
+        if(!eregi("\/$", $hereUrl)){
+            $hereUrl .= '/';
+        }
+
+        $hereUrl .= '?lang=' . $this->_languageCode;
+
         // Log a successful access
         $message = array(
             'clientIp' => $this->request->clientIp(),
             'method' => $this->request->method(),
-            'here' => $this->request->here,
+            'here' => $hereUrl,
             'referer' => $this->request->referer(),
             'status' => 200,
             'filesize' => 3266
