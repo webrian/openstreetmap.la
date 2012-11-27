@@ -24,7 +24,7 @@
 
         <script src="/lib/leaflet-0.4.4/dist/leaflet.js" type="text/javascript"></script>
 
-        <script src="/lang" type="text/javascript"></script>
+        <script src="/lang?_dc=<?php echo time(); ?>" type="text/javascript"></script>
 
         <!-- page specific -->
         <script type="text/javascript">
