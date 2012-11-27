@@ -10,7 +10,8 @@
 </div>
 <div class="content">
     All these files are licensed under the terms of the
-    <a class="external" href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution Share-Alike 2.0</a>
+    <a class="external" href="http://opendatacommons.org/licenses/odbl/summary/">
+    Open Data Commons Open Database License</a>
     license. If you use these data please attribute the OpenStreetMap
     contributors by including a link to www.openstreetmap.org. If you alter, transform,
     or build upon this work, you may distribute the resulting work only under the same
