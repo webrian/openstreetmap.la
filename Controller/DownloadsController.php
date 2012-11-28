@@ -21,8 +21,8 @@ class DownloadsController extends AppController {
 
         $parts = explode(".", $requestedFile);
 
-        $filename = $parts[0];
-        $suffix = $parts[count($requestedFile) - 1];
+        $filename = implode("." , array_slice($parts, 0, -1));
+        $suffix = $parts[count($parts) - 1];
 
         $filepath = $downloadsDirectory . DS . $requestedFile;
 
@@ -57,7 +57,7 @@ class DownloadsController extends AppController {
         // Return app/files/file
         $params = array(
             'id' => $requestedFile,
-            'name' => $requestedFile,
+            'name' => $filename,
             'extension' => $suffix,
             'download' => true,
             'mimeType' => array(

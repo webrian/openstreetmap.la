@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-10-24 08:09+0200\n"
+"POT-Creation-Date: 2012-11-28 10:28+0100\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -23,7 +23,7 @@ msgid "Edit"
 msgstr ""
 
 #: Controller/LangController.php:18
-#: View/Sites/main.ctp:101
+#: View/Sites/main.ctp:102
 msgid "Downloads"
 msgstr ""
 
@@ -123,75 +123,91 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: View/Sites/main.ctp:7;74
+#: View/Sites/main.ctp:8;75
 msgid "OpenStreetMap Laos"
 msgstr ""
 
-#: View/Sites/main.ctp:77
+#: View/Sites/main.ctp:78
 msgid "The free wiki world map"
 msgstr ""
 
-#: View/Sites/main.ctp:92
+#: View/Sites/main.ctp:93
 msgid "Edit the map"
 msgstr ""
 
-#: View/Sites/main.ctp:108;109;123;124
+#: View/Sites/main.ctp:109;110;128;129
 msgid "Complete database"
 msgstr ""
 
-#: View/Sites/main.ctp:110;125
-msgid "Roads"
-msgstr ""
-
-#: View/Sites/main.ctp:111;126
+#: View/Sites/main.ctp:111;130
 msgid "Amenities"
 msgstr ""
 
-#: View/Sites/main.ctp:112;127
+#: View/Sites/main.ctp:112;131
+msgid "Buildings"
+msgstr ""
+
+#: View/Sites/main.ctp:113;132
+msgid "Country"
+msgstr ""
+
+#: View/Sites/main.ctp:114;133
+msgid "National Parks"
+msgstr ""
+
+#: View/Sites/main.ctp:115;134
 msgid "Places"
 msgstr ""
 
-#: View/Sites/main.ctp:113;128
+#: View/Sites/main.ctp:116;135
+msgid "Provinces"
+msgstr ""
+
+#: View/Sites/main.ctp:117;136
+msgid "Roads"
+msgstr ""
+
+#: View/Sites/main.ctp:118;137
 msgid "Waterways"
 msgstr ""
 
-#: View/Sites/main.ctp:114;129
+#: View/Sites/main.ctp:119;138
 msgid "Waterbodies"
 msgstr ""
 
-#: View/Sites/main.ctp:115;130
+#: View/Sites/main.ctp:120;139
 msgid "Routable GPS map"
 msgstr ""
 
-#: View/Sites/main.ctp:116;117;131;132
+#: View/Sites/main.ctp:121;122;140;141
 msgid "Points of Interest"
 msgstr ""
 
-#: View/Sites/main.ctp:119
+#: View/Sites/main.ctp:124
 msgid "Laos"
 msgstr ""
 
-#: View/Sites/main.ctp:134
+#: View/Sites/main.ctp:143
 msgid "Cambodia"
 msgstr ""
 
-#: View/Sites/main.ctp:138
+#: View/Sites/main.ctp:147
 msgid "Content"
 msgstr ""
 
-#: View/Sites/main.ctp:138
+#: View/Sites/main.ctp:147
 msgid "Download Size"
 msgstr ""
 
-#: View/Sites/main.ctp:150
+#: View/Sites/main.ctp:159
 msgid "Last data update"
 msgstr ""
 
-#: View/Sites/main.ctp:168
+#: View/Sites/main.ctp:177
 msgid "unknown"
 msgstr ""
 
-#: View/Sites/main.ctp:176
+#: View/Sites/main.ctp:185
 msgid "About OpenStreetMap.la"
 msgstr ""
 
