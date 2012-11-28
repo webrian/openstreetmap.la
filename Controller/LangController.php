@@ -32,6 +32,7 @@ class LangController extends AppController {
             'Server is currently unreachable or its answer is invalid.' => __('Server is currently unreachable or its answer is invalid.'),
             'Not found' => __('Not found'),
             'Click to add new via point' => __('Click to add new via point'),
+            'Routing powered by ' => __('Routing powered by '),
             // Tooltips
             'Add destination' => __('Add destination'),
             'Drag to change route or double click to remove' => __('Drag to change route or double click to remove'),

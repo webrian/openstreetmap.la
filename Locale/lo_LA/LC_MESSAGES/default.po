@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: openstreetmap.la\n"
-"POT-Creation-Date: 2012-11-28 10:28+0100\n"
-"PO-Revision-Date: 2012-11-28 10:29+0100\n"
+"POT-Creation-Date: 2012-11-28 13:59+0100\n"
+"PO-Revision-Date: 2012-11-28 13:59+0100\n"
 "Last-Translator: Adrian Weber <webrian@openstreetmap.la>\n"
 "Language-Team: Adrian Weber <webrian@openstreetmap.la>\n"
 "Language: \n"
@@ -92,39 +92,43 @@ msgstr ""
 msgid "Click to add new via point"
 msgstr ""
 
-#: Controller/LangController.php:36
-msgid "Add destination"
+#: Controller/LangController.php:35
+msgid "Routing powered by "
 msgstr ""
 
 #: Controller/LangController.php:37
-msgid "Drag to change route or double click to remove"
+msgid "Add destination"
 msgstr ""
 
 #: Controller/LangController.php:38
+msgid "Drag to change route or double click to remove"
+msgstr ""
+
+#: Controller/LangController.php:39
 msgid "Loading..."
 msgstr ""
 
-#: Controller/LangController.php:40
+#: Controller/LangController.php:41
 msgid "Lao"
 msgstr "ພາສາລາວ"
 
-#: Controller/LangController.php:41
+#: Controller/LangController.php:42
 msgid "English"
 msgstr "ພາສາອັງກິດ"
 
-#: Controller/LangController.php:42
+#: Controller/LangController.php:43
 msgid "Permanent link to current map view"
 msgstr ""
 
-#: Controller/LangController.php:44
+#: Controller/LangController.php:45
 msgid "edit the map"
 msgstr ""
 
-#: Controller/LangController.php:45
+#: Controller/LangController.php:46
 msgid "Link"
 msgstr ""
 
-#: Controller/LangController.php:46
+#: Controller/LangController.php:47
 msgid "Language"
 msgstr "ພາສາ"
 
