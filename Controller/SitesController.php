@@ -96,7 +96,7 @@ class SitesController extends AppController {
             $mlng = $this->request->query['mlon'];
             // Set the center coordinates to the marker
             $lng = $this->request->query['mlon'];
-            $this->set('mlng', $nlng);
+            $this->set('mlng', $mlng);
         } elseif (isset($this->request->query['mlon']) && isset($this->request->query['lon'])) {
             $mlng = $this->request->query['mlon'];
             // Set the center coordinates to the marker

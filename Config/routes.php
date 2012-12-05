@@ -47,6 +47,22 @@ Router::connect('/about',
 );
 Router::connect('/', array('controller' => 'sites', 'action' => 'main'));
 
+// Define the routes for the Tile Map Service
+Router::connect('/tms/services/root.xml',
+               array('controller' => 'tms', 'action' => 'index')
+);
+Router::connect('/tms/1.0.0',
+               array('controller' => 'tms', 'action' => 'tilemapservice')
+);
+Router::connect('/tms/1.0.0/services/tilemapservice.xml',
+               array('controller' => 'tms', 'action' => 'tilemapservice')
+);
+Router::connect('/tms/1.0.0/:layer',
+               array('controller' => 'tms', 'action' => 'tilemap')
+);
+Router::connect('/tms/1.0.0/:layer/:zoom/:column/:row.png',
+               array('controller' => 'tms', 'action' => 'tiles')
+);
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
