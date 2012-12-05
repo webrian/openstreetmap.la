@@ -115,7 +115,6 @@ class PlacesController extends AppController {
         // Log SQL queries
         //$log = $this->Place->getDataSource()->getLog(false, false);
         //echo var_dump($log);
-
         // Use Geohash to encode the coordinates for the JSON output
         $geohash = new Geohash();
 
@@ -140,6 +139,7 @@ class PlacesController extends AppController {
         $metadata['success'] = true;
         $metadata['searchTerm'] = $search;
         $metadata['host'] = $this->request->host();
+        $metadata['fullUrl'] = "http://" . $this->request->host() . $this->request->here();
 
         $result['data'] = $items;
         $result['metadata'] = $metadata;

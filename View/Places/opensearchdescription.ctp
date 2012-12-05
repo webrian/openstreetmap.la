@@ -12,7 +12,7 @@
          template="http://<?php echo $host; ?>/places/suggest?q={searchTerms}&amp;p={startPage?}"/>
     <LongName>OpenStreetMap.la places search</LongName>
     <Image height="16" width="16" type="image/vnd.microsoft.icon">http://<?php echo $host; ?>/favicon.ico</Image>
-    <Query role="example" searchTerms="cat" />
+    <Query role="example" searchTerms="Phone" />
     <Attribution>Data Copyright by OpenStreetMap contributors</Attribution>
     <Language>en-us</Language>
     <OutputEncoding>UTF-8</OutputEncoding>

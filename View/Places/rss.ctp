@@ -17,6 +17,7 @@ $startPage = $result['metadata']['startPage'];
         <opensearch:totalResults><?php echo $result['metadata']['totalResults']; ?></opensearch:totalResults>
         <opensearch:startIndex><?php echo $result['metadata']['startIndex']; ?></opensearch:startIndex>
         <opensearch:itemsPerPage><?php echo $result['metadata']['itemsPerPage']; ?></opensearch:itemsPerPage>
+        <atom:link rel="self" href="<?php echo htmlspecialchars($result['metadata']['fullUrl']); ?>" type="application/rss+xml"/>
         <atom:link rel="search" type="application/opensearchdescription+xml"
                    href="<?php echo "http://$host/places.xml"; ?>"/>
         <opensearch:Query role="request"
