@@ -1,5 +1,7 @@
 <?php
 
+App::uses('Sanitize', 'Utility');
+
 include 'geohash.class.php';
 
 class SitesController extends AppController {
@@ -73,17 +75,36 @@ class SitesController extends AppController {
             $zoom = 6;
         }
 
+        // Check if a search place is requested indicated with parameter q
+        if (isset($this->request->query['q'])) {
+            $this->loadModel('Place');
+            // Get the search string
+            $search = Sanitize::escape($this->request->query['q']);
+
+            // Query the database
+            $data = $this->Place->find('all', array(
+                        'conditions' => array("Place.name ~* '$search'"),
+                        'limit' => 1
+                    ));
+
+            if (count($data) > 0) {
+                $tuple = $data[0];
+                $row = $tuple['Place'];
+                $lng = $mlng = $row['lon'];
+                $lat = $mlat = $row['lat'];
+                $zoom = 14;
+            }
+        }
+
         // Check first if marker position is set but no center coordinates
         if (isset($this->request->query['mlat']) && !isset($this->request->query['lat'])) {
             $mlat = $this->request->query['mlat'];
             // Set the center coordinates to the marker
             $lat = $this->request->query['mlat'];
-            $this->set('mlat', $mlat);
         } elseif (isset($this->request->query['mlat']) && isset($this->request->query['lat'])) {
             $mlat = $this->request->query['mlat'];
             // Set the center coordinates to the marker
             $lat = $this->request->query['lat'];
-            $this->set('mlat', $mlat);
         } else {
             if (isset($this->request->query['lat'])) {
                 $lat = $this->request->query['lat'];
@@ -96,12 +117,10 @@ class SitesController extends AppController {
             $mlng = $this->request->query['mlon'];
             // Set the center coordinates to the marker
             $lng = $this->request->query['mlon'];
-            $this->set('mlng', $mlng);
         } elseif (isset($this->request->query['mlon']) && isset($this->request->query['lon'])) {
             $mlng = $this->request->query['mlon'];
             // Set the center coordinates to the marker
             $lng = $this->request->query['lon'];
-            $this->set('mlng', $mlng);
         } elseif (isset($this->request->query['lon'])) {
             $lng = $this->request->query['lon'];
         }
@@ -112,6 +131,13 @@ class SitesController extends AppController {
             $zoom = $this->request->query['zoom'];
         }
         $this->set('zoom', $zoom);
+
+        if (isset($mlng)) {
+            $this->set('mlng', $mlng);
+        }
+        if (isset($mlat)) {
+            $this->set('mlat', $mlat);
+        }
 
         // Check also routing start and destination
         if (isset($this->request->query['start'])) {
@@ -134,12 +160,15 @@ class SitesController extends AppController {
             $this->set('viaCoords', $viaCoords);
         }
 
+        // Set also the host to the output
+        $this->set('host', $this->request->host());
+
         // Get the current url
         $hereUrl = $this->request->here;
 
         // Append a slash at the end of the current url if it does not end with
         // one.
-        if(!eregi("\/$", $hereUrl)){
+        if (!eregi("\/$", $hereUrl)) {
             $hereUrl .= '/';
         }
 

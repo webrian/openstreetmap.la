@@ -47,6 +47,9 @@ Router::connect('/about',
 );
 Router::connect('/', array('controller' => 'sites', 'action' => 'main'));
 
+// Define the route to the OpenSearch description
+Router::connect('/places.xml', array('controller' => 'places', 'action' => 'opensearchdescription'));
+
 // Define the routes for the Tile Map Service
 Router::connect('/tms/services/root.xml',
                array('controller' => 'tms', 'action' => 'index')
