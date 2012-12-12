@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: openstreetmap.la\n"
-"POT-Creation-Date: 2012-11-28 13:59+0100\n"
-"PO-Revision-Date: 2012-11-28 13:59+0100\n"
+"POT-Creation-Date: 2012-12-11 17:35+0100\n"
+"PO-Revision-Date: 2012-12-11 17:35+0100\n"
 "Last-Translator: Adrian Weber <webrian@openstreetmap.la>\n"
 "Language-Team: Adrian Weber <webrian@openstreetmap.la>\n"
 "Language: \n"
@@ -28,7 +28,7 @@ msgid "Edit"
 msgstr ""
 
 #: Controller/LangController.php:18
-#: View/Sites/main.ctp:102
+#: View/Sites/main.ctp:105
 msgid "Downloads"
 msgstr "ດາວໂຫຼດ"
 
@@ -132,91 +132,93 @@ msgstr ""
 msgid "Language"
 msgstr "ພາສາ"
 
-#: View/Sites/main.ctp:8;75
+#: View/Sites/main.ctp:8;78
+#: View/Weatherdiagrams/dev.ctp:8
+#: View/Weatherdiagrams/index.ctp:8
 msgid "OpenStreetMap Laos"
 msgstr "OpenStreetMap  ລາວ"
 
-#: View/Sites/main.ctp:78
+#: View/Sites/main.ctp:81
 msgid "The free wiki world map"
 msgstr ""
 
-#: View/Sites/main.ctp:93
+#: View/Sites/main.ctp:96
 msgid "Edit the map"
 msgstr ""
 
-#: View/Sites/main.ctp:109;110;128;129
+#: View/Sites/main.ctp:112;113;131;132
 msgid "Complete database"
 msgstr ""
 
-#: View/Sites/main.ctp:111;130
+#: View/Sites/main.ctp:114;133
 msgid "Amenities"
 msgstr ""
 
-#: View/Sites/main.ctp:112;131
+#: View/Sites/main.ctp:115;134
 msgid "Buildings"
 msgstr ""
 
-#: View/Sites/main.ctp:113;132
+#: View/Sites/main.ctp:116;135
 msgid "Country"
 msgstr ""
 
-#: View/Sites/main.ctp:114;133
+#: View/Sites/main.ctp:117;136
 msgid "National Parks"
 msgstr ""
 
-#: View/Sites/main.ctp:115;134
+#: View/Sites/main.ctp:118;137
 msgid "Places"
 msgstr ""
 
-#: View/Sites/main.ctp:116;135
+#: View/Sites/main.ctp:119;138
 msgid "Provinces"
 msgstr ""
 
-#: View/Sites/main.ctp:117;136
+#: View/Sites/main.ctp:120;139
 msgid "Roads"
 msgstr ""
 
-#: View/Sites/main.ctp:118;137
+#: View/Sites/main.ctp:121;140
 msgid "Waterways"
 msgstr ""
 
-#: View/Sites/main.ctp:119;138
+#: View/Sites/main.ctp:122;141
 msgid "Waterbodies"
 msgstr ""
 
-#: View/Sites/main.ctp:120;139
+#: View/Sites/main.ctp:123;142
 msgid "Routable GPS map"
 msgstr ""
 
-#: View/Sites/main.ctp:121;122;140;141
+#: View/Sites/main.ctp:124;125;143;144
 msgid "Points of Interest"
 msgstr ""
 
-#: View/Sites/main.ctp:124
+#: View/Sites/main.ctp:127
 msgid "Laos"
 msgstr "ປະເທດລາວ"
 
-#: View/Sites/main.ctp:143
+#: View/Sites/main.ctp:146
 msgid "Cambodia"
 msgstr "ປະເທດກຳປູເຈຍ"
 
-#: View/Sites/main.ctp:147
+#: View/Sites/main.ctp:150
 msgid "Content"
 msgstr ""
 
-#: View/Sites/main.ctp:147
+#: View/Sites/main.ctp:150
 msgid "Download Size"
 msgstr ""
 
-#: View/Sites/main.ctp:159
+#: View/Sites/main.ctp:162
 msgid "Last data update"
 msgstr ""
 
-#: View/Sites/main.ctp:177
+#: View/Sites/main.ctp:180
 msgid "unknown"
 msgstr ""
 
-#: View/Sites/main.ctp:185
+#: View/Sites/main.ctp:188
 msgid "About OpenStreetMap.la"
 msgstr ""
 

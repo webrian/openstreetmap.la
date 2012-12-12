@@ -12,14 +12,14 @@ class SitesController extends AppController {
      * keys.
      * @var array
      */
-    private $_languages = array(
+    protected $_languages = array(
         'lo' => 'lo_LA',
         'en' => 'en_US'
     );
-    private $_languageCode = null;
-    private $_languageCookie = '__LANG__';
-    private $_cookieIsEncrypted = false;
-    private $_expiration = '30 Days';
+    protected $_languageCode = null;
+    protected $_languageCookie = '__LANG__';
+    protected $_cookieIsEncrypted = false;
+    protected $_expiration = '30 Days';
 
     public function beforeFilter() {
 
@@ -194,7 +194,7 @@ class SitesController extends AppController {
      * 3. lao is preferred language
      * @return String Two-letter language identifier
      */
-    private function _extractLanguage() {
+    protected function _extractLanguage() {
         // Default lanuage is always Lao
         $lang = 'lo';
 
