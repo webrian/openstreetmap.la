@@ -12,8 +12,16 @@
               href="http://<?php echo $host; ?>/places.xml" title="OpenStreetMap.la Places" />
 
         <link rel="stylesheet" type="text/css" href="/lib/extjs-4.1.1/resources/css/ext-all-gray.css"></link>
-        <script type="text/javascript" src="/lib/extjs-4.1.1/ext.js"></script>
-        <script type="text/javascript" src="/weather-all.js"></script>
+        <script type="text/javascript" src="/lib/extjs-4.1.1/ext-debug.js"></script>
+        <script type="text/javascript">
+            Ext.Loader.setConfig({
+                enabled: true,
+                paths: {
+                    'Osm': '/lib/app',
+                    'Ext': '/lib/extjs-4.1.1/src'
+                }
+            });
+        </script>
         <script type="text/javascript" src="/lib/app/weather.js"></script>
     </head>
     <body>

@@ -7,6 +7,11 @@ class WeatherdiagramsController extends AppController {
         $this->set('host', $host);
     }
 
+    public function dev() {
+        $host = $this->request->host();
+        $this->set('host', $host);
+    }
+
     public function temperature() {
 
         $this->response->type('application/json');
@@ -40,7 +45,8 @@ class WeatherdiagramsController extends AppController {
 
         $countTempResult = count($minTempResult);
 
-        if ($countTempResult > 300) {
+        // If the time span is more than half a year, show only one value per week
+        if ($countTempResult > 178) {
 
             $minTempResult = $this->Weatherdiagram->find('all', array(
                         'fields' => array('MIN(Weatherdiagram.temperature_celsius) AS min,
@@ -52,8 +58,6 @@ class WeatherdiagramsController extends AppController {
                         'conditions' => array($timespan)
                     ));
         }
-
-
 
         //echo var_dump($result[0]);
 
@@ -69,27 +73,58 @@ class WeatherdiagramsController extends AppController {
             );
         }
 
-        $this->set('content', array('success' => true, 'data' => $data));
+        $this->set('content', array('success' => true, 'total' => count($minTempResult), 'data' => $data));
     }
 
-    public function current() {
+    public function day() {
 
         $this->response->type('application/json');
 
-        $conditions = "\"time\" >= TIMESTAMPTZ('2012-12-05 00:01:00+01') - interval '2 day'";
+        $day = Null;
+        if (isset($this->request->query['date'])) {
+            $day = $this->request->query['date'];
+        }
+
+        $date = strtotime($day);
+        $sqlDate = "DATE('" . date('Y-m-d', $date) . "')";
+
+        if ($date != Null) {
+            $conditions = "DATE(\"time\") = $sqlDate";
+        } else {
+            $conditions = "DATE(\"time\") = DATE((SELECT now()))";
+        }
 
         $currentResult = $this->Weatherdiagram->find('all', array(
+                    'fields' => array(
+                        "TIMETZ(\"Weatherdiagram\".\"time\") AS time,
+                        DATE(\"Weatherdiagram\".\"time\") AS date,
+                        temperature_celsius,
+                        dew_point_celsius,
+                        humidity,
+                        pressure,
+                        wind_speed,
+                        wind_direction,
+                        wind_compass,
+                        visibility_kilometers,
+                        weather,
+                        raw_metar_code,
+                        gid"
+                    ),
                     'order' => '"Weatherdiagram"."time" ASC',
                     'conditions' => array($conditions)
                 ));
 
+        //$log = $this->Weatherdiagram->getDataSource()->getLog(false, false);
+        //echo var_dump($currentResult);
+
         $data = array();
 
         for ($i = 0; $i < count($currentResult); $i++) {
-            $row = $currentResult[$i]['Weatherdiagram'];
+            $row = $currentResult[$i][0];
             array_push($data, array(
                 'gid' => $row['gid'],
                 'time' => $row['time'],
+                'date' => $row['date'],
                 'temperature_celsius' => (float) $row['temperature_celsius'],
                 'dew_point_celsius' => (float) $row['dew_point_celsius'],
                 'humidity' => (float) $row['humidity'],
