@@ -1,15 +1,77 @@
 <?php
 
-class WeatherdiagramsController extends AppController {
+include_once 'SitesController.php';
+
+class WeatherdiagramsController extends SitesController {
+
+    protected function formatBytes($bytes) {
+        if ($bytes < 1024)
+            return $bytes . ' B';
+        elseif ($bytes < 1048576)
+            return round($bytes / 1024, 2) . ' KB';
+        else
+            return round($bytes / 1048576, 2) . ' MB';
+    }
+
+    public function beforeFilter() {
+        $lang = $this->_extractLanguage();
+        $this->set('lang', $lang);
+
+        $this->Session->write('Config.language', $this->_languages[$lang]);
+        $this->_languageCode = $lang;
+        Configure::write('Config.language', $this->Session->read('Config.language'));
+
+        // Configure the custom apache like log file
+        CakeLog::config('apache.log', array(
+                    'engine' => 'CustomFileLog',
+                    'path' => dirname(APP) . DS . "app" . DS . "tmp" . DS . "logs" . DS
+                ));
+    }
 
     public function index() {
+        // Set the host
         $host = $this->request->host();
         $this->set('host', $host);
+
+        // Get the filesize for the database extract
+        $file = dirname(APP) . DS . "Data" . DS . "Laos" . DS . "metar_vlvt.bz2";
+        $filesize = $this->formatBytes(@filesize($file));
+        $this->set('filesize', $filesize);
+
+        // Log a successful search before returning the result
+        $message = array(
+            'clientIp' => $this->request->clientIp(),
+            'method' => $this->request->method(),
+            'here' => $this->request->here,
+            'referer' => $this->request->referer(),
+            'status' => 200,
+            // Estimated value
+            'filesize' => 1321
+        );
+        CakeLog::write("apache_access", $message);
     }
 
     public function dev() {
+        // Set the host
         $host = $this->request->host();
         $this->set('host', $host);
+
+        // Get the filesize for the database extract
+        $file = dirname(APP) . DS . "Data" . DS . "Laos" . DS . "metar_vlvt.bz2";
+        $filesize = $this->formatBytes(@filesize($file));
+        $this->set('filesize', $filesize);
+
+        // Log a successful search before returning the result
+        $message = array(
+            'clientIp' => $this->request->clientIp(),
+            'method' => $this->request->method(),
+            'here' => $this->request->here,
+            'referer' => $this->request->referer(),
+            'status' => 200,
+            // Estimated value
+            'filesize' => 1321
+        );
+        CakeLog::write("apache_access", $message);
     }
 
     public function temperature() {
@@ -74,6 +136,17 @@ class WeatherdiagramsController extends AppController {
         }
 
         $this->set('content', array('success' => true, 'total' => count($minTempResult), 'data' => $data));
+
+        // Log a successful place search before returning the result
+        $message = array(
+            'clientIp' => $this->request->clientIp(),
+            'method' => $this->request->method(),
+            'here' => $this->request->here,
+            'referer' => $this->request->referer(),
+            'status' => 200,
+            'filesize' => strlen(json_encode($data))
+        );
+        CakeLog::write("apache_access", $message);
     }
 
     public function day() {
@@ -137,6 +210,17 @@ class WeatherdiagramsController extends AppController {
         }
 
         $this->set('content', array('success' => true, 'data' => $data));
+
+        // Log a successful place search before returning the result
+        $message = array(
+            'clientIp' => $this->request->clientIp(),
+            'method' => $this->request->method(),
+            'here' => $this->request->here,
+            'referer' => $this->request->referer(),
+            'status' => 200,
+            'filesize' => strlen(json_encode($data))
+        );
+        CakeLog::write("apache_access", $message);
     }
 
 }
