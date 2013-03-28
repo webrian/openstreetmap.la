@@ -10,7 +10,7 @@ class TmsController extends AppController {
      * Local file path to the tiles directory
      * @var String
      */
-    private $tilesdir = "/home/openstreet/Data/tiles";
+    private $tilesdir = "";
     private $rootService = "tms";
     private $tileMapService = "1.0.0";
 
@@ -31,6 +31,7 @@ class TmsController extends AppController {
      * http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification#TileMapService_Resource
      */
     public function tilemapservice() {
+        $this->tilesdir = ROOT . DS . "Data" . DS . "tiles";
         // Set the content type to text/xml
         $this->response->type('text/xml');
 
@@ -94,6 +95,7 @@ class TmsController extends AppController {
      * http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification#TileMap_Resource
      */
     public function tilemap() {
+        $this->tilesdir = ROOT . DS . "Data" . DS . "tiles";
 
         // Set the Content-Type to text/xml
         $this->response->type('text/xml');
@@ -111,7 +113,7 @@ class TmsController extends AppController {
                 . DS . $this->tileMapService . DS;
 
         // Get the tilemapresource.xml file for the layer
-        $resourceFile = "$this->tilesdir/$layer/tilemapresource.xml";
+        $resourceFile = $this->tilesdir .DS . $layer . DS . "tilemapresource.xml";
         if (!is_readable($resourceFile)) {
             throw new NotFoundException("Layer metadata not found.");
         }
@@ -137,55 +139,42 @@ class TmsController extends AppController {
     }
 
     public function tiles() {
-        // Configure the custom apache like log file
-        CakeLog::config('apache.log', array(
-                    'engine' => 'CustomFileLog',
-                    'path' => dirname(APP) . DS . "app" . DS . "tmp" . DS . "logs" . DS
-                ));
-
+        $this->tilesdir = ROOT . DS . "Data" . DS . "tiles";
 
         $this->autoRender = false;
         $this->response->type('image/png');
 
         $layer = $this->request->params['layer'];
         $zoom = $this->request->params['zoom'];
-        $x = $this->request->params['column'];
-        $y_tms = $this->request->params['row'];
+        $column = $this->request->params['column'];
+        $row = $this->request->params['row'];
 
-        // Flip the y coordinate from Google compatible to OGC TMS standard
-        $y = pow(2, $zoom) - 1 - $y_tms;
+        try {
+            // Open the database
+            $conn = new PDO("sqlite:$this->tilesdir/$layer/tiles.mbtiles");
 
-        $file = $this->tilesdir . DS . $layer . DS . $zoom . DS . $x . DS . $y . ".png";
-        //echo $file;
+            // Query the tiles view and echo out the returned image
+            $sql = "SELECT * FROM tiles WHERE zoom_level = $zoom AND tile_column = $column AND tile_row = $row";
+            $q = $conn->prepare($sql);
+            $q->execute();
 
-        if (is_readable($file)) {
+            $q->bindColumn(1, $zoom_level);
+            $q->bindColumn(2, $tile_column);
+            $q->bindColumn(3, $tile_row);
+            $q->bindColumn(4, $tile_data, PDO::PARAM_LOB);
 
-            // Log a successful tile delivery
-            $message = array(
-                'clientIp' => $this->request->clientIp(),
-                'method' => $this->request->method(),
-                'here' => DS . $this->rootService . DS . $this->tileMapService . DS . $layer,
-                'referer' => $this->request->referer(),
-                'status' => 200,
-                'filesize' => filesize($file)
-            );
-            CakeLog::write("apache_access", $message);
+            $result = $q->fetchAll();
+            if (count($result) == 0) {
+                $emptyFile = $this->tilesdir . DS . "empty.png";
+                $this->response->body(file_get_contents($emptyFile));
+            } else {
+                $this->response->body($result[0]['tile_data']);
+            }
 
-            $this->response->body(file_get_contents($file));
-        } else {
-            $emptyFile = $this->tilesdir . DS . "empty.png";
-            // Log a successful tile delivery
-            $message = array(
-                'clientIp' => $this->request->clientIp(),
-                'method' => $this->request->method(),
-                'here' => DS . $this->rootService . DS . $this->tileMapService . DS . $layer,
-                'referer' => $this->request->referer(),
-                'status' => 200,
-                'filesize' => filesize($emptyFile)
-            );
-            CakeLog::write("apache_access", $message);
-            $this->response->body(file_get_contents($emptyFile));
+        } catch (Exception $e) {
+            print 'Exception : ' . $e->getMessage();
         }
+
     }
 
 }
