@@ -10,5 +10,5 @@
     <a class="external" href="http://wiki.openstreetmap.org/wiki/Potlatch">Potlatch</a> editor.
 </div>
 <div class="content">
-    <b>Note:</b> Requires a login from openstreetmap.org.
+    Note: Requires a login from openstreetmap.org.
 </div>

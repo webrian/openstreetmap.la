@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: openstreetmap.la\n"
-"POT-Creation-Date: 2012-12-11 17:35+0100\n"
-"PO-Revision-Date: 2012-12-11 17:35+0100\n"
+"POT-Creation-Date: 2013-04-29 22:40+0200\n"
+"PO-Revision-Date: 2013-04-29 22:52+0100\n"
 "Last-Translator: Adrian Weber <webrian@openstreetmap.la>\n"
 "Language-Team: Adrian Weber <webrian@openstreetmap.la>\n"
 "Language: \n"
@@ -28,7 +28,7 @@ msgid "Edit"
 msgstr ""
 
 #: Controller/LangController.php:18
-#: View/Sites/main.ctp:105
+#: View/Sites/main.ctp:131
 msgid "Downloads"
 msgstr "ດາວໂຫຼດ"
 
@@ -146,80 +146,109 @@ msgstr ""
 msgid "Edit the map"
 msgstr ""
 
-#: View/Sites/main.ctp:112;113;131;132
+#: View/Sites/main.ctp:101
+msgid "Topographic Map TMS"
+msgstr ""
+
+#: View/Sites/main.ctp:103
+msgid "Support in mapping geographical features provides the <a href=\"http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification\" class=\"external\">Tile Map Service</a>, which serves topographic maps for northern Laos. These topographic maps from the 1960ies were made by the US Army Map Service in the scales of 1:200000 and 1:50000. Meanwhile these maps are released to the public domain and available at the <a href=\"http://www.lib.utexas.edu/maps/laos.html\" class=\"external\">University of Texas Libraries</a>."
+msgstr ""
+
+#: View/Sites/main.ctp:106
+msgid "The tile map service is accessible at:"
+msgstr ""
+
+#: View/Sites/main.ctp:111
+msgid "To use these topographic maps in <a href=\"http://josm.openstreetmap.de/\" class=\"external\">JOSM</a> open the \"Imagery Preferences\" tab in the preferences dialog and add a new TMS entry."
+msgstr ""
+
+#: View/Sites/main.ctp:114
+msgid "Use the following settings:"
+msgstr ""
+
+#: View/Sites/main.ctp:124
+msgid "More detailed instructions on how to add custom imagery is available at"
+msgstr ""
+
+#: View/Sites/main.ctp:138;139;157;158
 msgid "Complete database"
 msgstr ""
 
-#: View/Sites/main.ctp:114;133
+#: View/Sites/main.ctp:140;159
 msgid "Amenities"
 msgstr ""
 
-#: View/Sites/main.ctp:115;134
+#: View/Sites/main.ctp:141;160
 msgid "Buildings"
 msgstr ""
 
-#: View/Sites/main.ctp:116;135
+#: View/Sites/main.ctp:142;161
 msgid "Country"
 msgstr ""
 
-#: View/Sites/main.ctp:117;136
+#: View/Sites/main.ctp:143;162
 msgid "National Parks"
 msgstr ""
 
-#: View/Sites/main.ctp:118;137
+#: View/Sites/main.ctp:144;163
 msgid "Places"
 msgstr ""
 
-#: View/Sites/main.ctp:119;138
+#: View/Sites/main.ctp:145;164
 msgid "Provinces"
 msgstr ""
 
-#: View/Sites/main.ctp:120;139
+#: View/Sites/main.ctp:146;165
 msgid "Roads"
 msgstr ""
 
-#: View/Sites/main.ctp:121;140
+#: View/Sites/main.ctp:147;166
 msgid "Waterways"
 msgstr ""
 
-#: View/Sites/main.ctp:122;141
+#: View/Sites/main.ctp:148;167
 msgid "Waterbodies"
 msgstr ""
 
-#: View/Sites/main.ctp:123;142
+#: View/Sites/main.ctp:149;168
 msgid "Routable GPS map"
 msgstr ""
 
-#: View/Sites/main.ctp:124;125;143;144
+#: View/Sites/main.ctp:150;151;169;170
 msgid "Points of Interest"
 msgstr ""
 
-#: View/Sites/main.ctp:127
+#: View/Sites/main.ctp:153
 msgid "Laos"
 msgstr "ປະເທດລາວ"
 
-#: View/Sites/main.ctp:146
+#: View/Sites/main.ctp:172
 msgid "Cambodia"
 msgstr "ປະເທດກຳປູເຈຍ"
 
-#: View/Sites/main.ctp:150
+#: View/Sites/main.ctp:176
 msgid "Content"
 msgstr ""
 
-#: View/Sites/main.ctp:150
+#: View/Sites/main.ctp:176
 msgid "Download Size"
 msgstr ""
 
-#: View/Sites/main.ctp:162
+#: View/Sites/main.ctp:188
 msgid "Last data update"
 msgstr ""
 
-#: View/Sites/main.ctp:180
+#: View/Sites/main.ctp:206
 msgid "unknown"
 msgstr ""
 
-#: View/Sites/main.ctp:188
+#: View/Sites/main.ctp:214
 msgid "About OpenStreetMap.la"
+msgstr ""
+
+#: View/Weatherdiagrams/dev.ctp:37
+#: View/Weatherdiagrams/index.ctp:29
+msgid "Loading ..."
 msgstr ""
 
 #: View/Errors/error400.ctp:21

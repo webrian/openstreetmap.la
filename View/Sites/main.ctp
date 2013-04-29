@@ -98,97 +98,123 @@ echo "Ext.ux.activeTab = '$tab';\n";
                 // Include the text about how to edit the map
                 echo $this->element("Sites/" . Configure::read('Config.language') . "/edit");
                 ?>
+                <h2><?php echo __("Topographic Map TMS"); ?></h2>
+                <div class="content">
+                    <?php echo __('Support in mapping geographical features provides the <a href="http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification" class="external">Tile Map Service</a>, which serves topographic maps for northern Laos. These topographic maps from the 1960ies were made by the US Army Map Service in the scales of 1:200000 and 1:50000. Meanwhile these maps are released to the public domain and available at the <a href="http://www.lib.utexas.edu/maps/laos.html" class="external">University of Texas Libraries</a>.'); ?>
+                </div>
+                <div class="content">
+                    <?php echo __("The tile map service is accessible at:"); ?><br/>
+                    <a href="http://<?php echo $host; ?>/tms/">http://<?php echo $host; ?>/tms/</a>
+                </div>
+                <h3>Add topographic maps in JOSM</h3>
+                <div class="content">
+                    <?php echo __('To use these topographic maps in <a href="http://josm.openstreetmap.de/" class="external">JOSM</a> open the "Imagery Preferences" tab in the preferences dialog and add a new TMS entry.'); ?>
+                </div>
+                <div class="content">
+                    <?php echo __('Use the following settings:'); ?>
+                    <ul>
+                        <li>Menu Name: <pre>Topomap Laos</pre></li>
+                        <li>TMS URL: <pre>http://www.openstreetmap.la/tms/1.0.0/topomap/{zoom}/{x}/{-y}.png</pre></li>
+                    </ul>
+                </div>
+                <div class="content">
+                    <img src="http://<?php echo $host; ?>/img/addTmsDialog.png" width="350" height="193" alt="Add imagery URL dialog in JOSM"/>
+                </div>
+                <div class="content">
+                    <?php echo __("More detailed instructions on how to add custom imagery is available at"); ?>
+                    <a class="external" href="http://josm.openstreetmap.de/wiki/Help/Preferences/Imagery#AddcustomTMSimagery">http://josm.openstreetmap.de/wiki/Help/Preferences/Imagery#AddcustomTMSimagery</a>.
+                </div>
             </div>
         </div>
         <div id="downloads-tab" class="x-panel-mc">
             <div class="main-tab">
                 <h1><?php echo __('Downloads'); ?></h1>
                 <?php
-                // Include the introductory text for the downloads
-                echo $this->element("Sites/" . Configure::read('Config.language') . "/downloads");
+                    // Include the introductory text for the downloads
+                    echo $this->element("Sites/" . Configure::read('Config.language') . "/downloads");
 
-                // Laos files and download table
-                $laos_files = array(
-                    array("laos.osm.pbf", "OSM Protobuf", __("Complete database")),
-                    array("laos.osm.bz2", "OSM XML", __("Complete database")),
-                    array("amenities.shp.zip", "ESRI Shapefile", __("Amenities")),
-                    array("buildings.shp.zip", "ESRI Shapefile", __("Buildings")),
-                    array("country.shp.zip", "ESRI Shapefile", __("Country")),
-                    array("national_parks.shp.zip", "ESRI Shapefile", __("National Parks")),
-                    array("places.shp.zip", "ESRI Shapefile", __("Places")),
-                    array("provinces.shp.zip", "ESRI Shapefile", __("Provinces")),
-                    array("roads.shp.zip", "ESRI Shapefile", __("Roads")),
-                    array("waterway_lines.shp.zip", "ESRI  Shapefile", __("Waterways")),
-                    array("waterway_polygons.shp.zip", "ESRI Shapefile", __("Waterbodies")),
-                    array("gmapsupp.img.zip", "<a class=\"external\" href=\"http://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin#Installing_the_map_onto_your_GPS\">Garmin Map</a>", __("Routable GPS map")),
-                    array("pointsofinterest.kmz", "KMZ Google Earth", __("Points of Interest")),
-                    array("pointsofinterest.gpx.zip", "GPX", __("Points of Interest")));
+                    // Laos files and download table
+                    $laos_files = array(
+                        array("laos.osm.pbf", "OSM Protobuf", __("Complete database")),
+                        array("laos.osm.bz2", "OSM XML", __("Complete database")),
+                        array("amenities.shp.zip", "ESRI Shapefile", __("Amenities")),
+                        array("buildings.shp.zip", "ESRI Shapefile", __("Buildings")),
+                        array("country.shp.zip", "ESRI Shapefile", __("Country")),
+                        array("national_parks.shp.zip", "ESRI Shapefile", __("National Parks")),
+                        array("places.shp.zip", "ESRI Shapefile", __("Places")),
+                        array("provinces.shp.zip", "ESRI Shapefile", __("Provinces")),
+                        array("roads.shp.zip", "ESRI Shapefile", __("Roads")),
+                        array("waterway_lines.shp.zip", "ESRI  Shapefile", __("Waterways")),
+                        array("waterway_polygons.shp.zip", "ESRI Shapefile", __("Waterbodies")),
+                        array("gmapsupp.img.zip", "<a class=\"external\" href=\"http://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin#Installing_the_map_onto_your_GPS\">Garmin Map</a>", __("Routable GPS map")),
+                        array("pointsofinterest.kmz", "KMZ Google Earth", __("Points of Interest")),
+                        array("pointsofinterest.gpx.zip", "GPX", __("Points of Interest")));
 
-                fileList(__('Laos'), $laos_files, 'Laos');
+                    fileList(__('Laos'), $laos_files, 'Laos');
 
-                // Cambodia files and download table
-                $cambodia_files = array(
-                    array("cambodia.osm.pbf", "OSM Protobuf", __("Complete database")),
-                    array("cambodia.osm.bz2", "OSM XML", __("Complete database")),
-                    array("amenities.shp.zip", "ESRI Shapefile", __("Amenities")),
-                    array("buildings.shp.zip", "ESRI Shapefile", __("Buildings")),
-                    array("country.shp.zip", "ESRI Shapefile", __("Country")),
-                    array("national_parks.shp.zip", "ESRI Shapefile", __("National Parks")),
-                    array("places.shp.zip", "ESRI Shapefile", __("Places")),
-                    array("provinces.shp.zip", "ESRI Shapefile", __("Provinces")),
-                    array("roads.shp.zip", "ESRI Shapefile", __("Roads")),
-                    array("waterway_lines.shp.zip", "ESRI  Shapefile", __("Waterways")),
-                    array("waterway_polygons.shp.zip", "ESRI Shapefile", __("Waterbodies")),
-                    array("gmapsupp.img.zip", "<a class=\"external\" href=\"http://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin#Installing_the_map_onto_your_GPS\">Garmin Map</a>", __("Routable GPS map")),
-                    array("pointsofinterest.kmz", "KMZ Google Earth", __("Points of Interest")),
-                    array("pointsofinterest.gpx.zip", "GPX", __("Points of Interest")));
+                    // Cambodia files and download table
+                    $cambodia_files = array(
+                        array("cambodia.osm.pbf", "OSM Protobuf", __("Complete database")),
+                        array("cambodia.osm.bz2", "OSM XML", __("Complete database")),
+                        array("amenities.shp.zip", "ESRI Shapefile", __("Amenities")),
+                        array("buildings.shp.zip", "ESRI Shapefile", __("Buildings")),
+                        array("country.shp.zip", "ESRI Shapefile", __("Country")),
+                        array("national_parks.shp.zip", "ESRI Shapefile", __("National Parks")),
+                        array("places.shp.zip", "ESRI Shapefile", __("Places")),
+                        array("provinces.shp.zip", "ESRI Shapefile", __("Provinces")),
+                        array("roads.shp.zip", "ESRI Shapefile", __("Roads")),
+                        array("waterway_lines.shp.zip", "ESRI  Shapefile", __("Waterways")),
+                        array("waterway_polygons.shp.zip", "ESRI Shapefile", __("Waterbodies")),
+                        array("gmapsupp.img.zip", "<a class=\"external\" href=\"http://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin#Installing_the_map_onto_your_GPS\">Garmin Map</a>", __("Routable GPS map")),
+                        array("pointsofinterest.kmz", "KMZ Google Earth", __("Points of Interest")),
+                        array("pointsofinterest.gpx.zip", "GPX", __("Points of Interest")));
 
-                fileList(__('Cambodia'), $cambodia_files, 'Cambodia');
+                    fileList(__('Cambodia'), $cambodia_files, 'Cambodia');
 
-                function fileList($country, $files, $downloadDirectory) {
-                    echo " <div class=\"content\"><h2>$country</h2><table width=\"100%\">";
-                    echo "<tr><td>" . __('Content') . "</td><td>Format</td><td>" . __('Download Size') . "</td></tr>\n";
+                    function fileList($country, $files, $downloadDirectory) {
+                        echo " <div class=\"content\"><h2>$country</h2><table width=\"100%\">";
+                        echo "<tr><td>" . __('Content') . "</td><td>Format</td><td>" . __('Download Size') . "</td></tr>\n";
 
-                    foreach ($files as $f) {
+                        foreach ($files as $f) {
 
-                        echo "<tr><td><a href=\"/downloads/" . strtolower($downloadDirectory);
-                        echo "/$f[0]\">$f[2]</a></td><td>$f[1]</td><td>";
-                        $path = dirname(APP) . DS . "Data" . DS . $downloadDirectory;
-                        echo formatBytes(@filesize($path . DS . $f[0])) . "</td></tr>\n";
+                            echo "<tr><td><a href=\"/downloads/" . strtolower($downloadDirectory);
+                            echo "/$f[0]\">$f[2]</a></td><td>$f[1]</td><td>";
+                            $path = dirname(APP) . DS . "Data" . DS . $downloadDirectory;
+                            echo formatBytes(@filesize($path . DS . $f[0])) . "</td></tr>\n";
+                        }
+
+                        echo "</table></div>";
+
+                        echo "<div class=\"content\">" . __('Last data update') . ": ";
+                        echo lastModified($path . DS . $files[0][0]);
+                        echo "</div>";
                     }
 
-                    echo "</table></div>";
-
-                    echo "<div class=\"content\">" . __('Last data update') . ": ";
-                    echo lastModified($path . DS . $files[0][0]);
-                    echo "</div>";
-                }
-
-                function formatBytes($bytes) {
-                    if ($bytes < 1024)
-                        return $bytes . ' B';
-                    elseif ($bytes < 1048576)
-                        return round($bytes / 1024, 2) . ' KB';
-                    else
-                        return round($bytes / 1048576, 2) . ' MB';
-                }
-
-                function lastModified($file) {
-                    if (file_exists($file)) {
-                        return date("j. M Y", filemtime($file));
-                    } else {
-                        return __("unknown");
+                    function formatBytes($bytes) {
+                        if ($bytes < 1024)
+                            return $bytes . ' B';
+                        elseif ($bytes < 1048576)
+                            return round($bytes / 1024, 2) . ' KB';
+                        else
+                            return round($bytes / 1048576, 2) . ' MB';
                     }
-                }
+
+                    function lastModified($file) {
+                        if (file_exists($file)) {
+                            return date("j. M Y", filemtime($file));
+                        } else {
+                            return __("unknown");
+                        }
+                    }
                 ?>
+                </div>
             </div>
-        </div>
-        <div id="about-tab" class="x-panel-mc">
-            <div class="main-tab">
-                <h1><?php echo __("About OpenStreetMap.la"); ?></h1>
+            <div id="about-tab" class="x-panel-mc">
+                <div class="main-tab">
+                    <h1><?php echo __("About OpenStreetMap.la"); ?></h1>
                 <?php
-                // Include the about text
-                echo $this->element("Sites/" . Configure::read('Config.language') . "/about");
+                    // Include the about text
+                    echo $this->element("Sites/" . Configure::read('Config.language') . "/about");
                 ?>
                 <div class="content">
                     <a href="http://validator.w3.org/check?uri=referer">
