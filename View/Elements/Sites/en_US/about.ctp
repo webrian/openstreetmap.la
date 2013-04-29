@@ -9,7 +9,3 @@
     Please find more information about OpenStreetMap and how to join on the
     <a class="external" href="http://wiki.openstreetmap.org/wiki/Main_Page">OpenStreetMap Wiki</a>.
 </div>
-<div class="content">
-    OpenStreetMap.la is kindly hosted by
-    <a class="external" href="http://www.laowebhosting.com/">Lao-Webhosting</a>.
-</div>
