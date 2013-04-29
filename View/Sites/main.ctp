@@ -14,8 +14,8 @@
         <!-- base library -->
         <link rel="stylesheet" type="text/css" href="/lib/ext-3.3.0/resources/css/ext-all-notheme.css"/>
         <link rel="stylesheet" type="text/css" href="/lib/ext-3.3.0/resources/css/xtheme-gray.css"/>
-        <link rel="stylesheet" href="/lib/leaflet-0.4.4/dist/leaflet.css" />
-        <!--[if lte IE 8]><link rel="stylesheet" href="/lib/leaflet-0.4.4/dist/leaflet.ie.css" /><![endif]-->
+        <link rel="stylesheet" href="/lib/leaflet-0.5.1/dist/leaflet.css" />
+        <!--[if lte IE 8]><link rel="stylesheet" href="/lib/leaflet-0.5.1/dist/leaflet.ie.css" /><![endif]-->
         <link rel="stylesheet" type="text/css" href="/style.css"/>
 
         <!-- ** Javascript ** -->
@@ -25,7 +25,7 @@
         <!-- ExtJS library: all widgets -->
         <script type="text/javascript" src="/lib/ext-3.3.0/ext-all-osmla.js"></script>
 
-        <script src="/lib/leaflet-0.4.4/dist/leaflet.js" type="text/javascript"></script>
+        <script src="/lib/leaflet-0.5.1/dist/leaflet.js" type="text/javascript"></script>
 
         <script src="/lang?_dc=<?php echo time(); ?>" type="text/javascript"></script>
 
