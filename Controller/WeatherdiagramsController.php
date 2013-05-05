@@ -99,7 +99,7 @@ class WeatherdiagramsController extends SitesController {
                     'fields' => array('MIN(Weatherdiagram.temperature_celsius) AS min,
                         MAX(Weatherdiagram.temperature_celsius) AS max,
                         AVG(Weatherdiagram.temperature_celsius) AS average,
-                        DATE(Weatherdiagram.time) AS day'),
+                        DATE("Weatherdiagram"."time" AT TIME ZONE \'ICT\') AS day'),
                     'group' => 'day',
                     'order' => 'day ASC',
                     'conditions' => array($timespan)
@@ -159,18 +159,18 @@ class WeatherdiagramsController extends SitesController {
         }
 
         $date = strtotime($day);
-        $sqlDate = "DATE('" . date('Y-m-d', $date) . "')";
+        $sqlDate = "DATE('" . date('Y-m-d', $date) . "' AT TIME ZONE 'ICT')";
 
         if ($date != Null) {
-            $conditions = "DATE(\"time\") = $sqlDate";
+            $conditions = "DATE(\"time\" AT TIME ZONE 'ICT') = $sqlDate";
         } else {
-            $conditions = "DATE(\"time\") = DATE((SELECT now()))";
+            $conditions = "DATE(\"time\" AT TIME ZONE 'ICT') = DATE((SELECT now() AT TIME ZONE 'ICT'))";
         }
 
         $currentResult = $this->Weatherdiagram->find('all', array(
                     'fields' => array(
-                        "TIMETZ(\"Weatherdiagram\".\"time\") AS time,
-                        DATE(\"Weatherdiagram\".\"time\") AS date,
+                        "TIMETZ(\"Weatherdiagram\".\"time\" AT TIME ZONE 'ICT') AS time,
+                        DATE(\"Weatherdiagram\".\"time\" AT TIME ZONE 'ICT') AS date,
                         temperature_celsius,
                         dew_point_celsius,
                         humidity,
