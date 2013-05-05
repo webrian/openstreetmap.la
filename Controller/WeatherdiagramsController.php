@@ -169,7 +169,7 @@ class WeatherdiagramsController extends SitesController {
 
         $currentResult = $this->Weatherdiagram->find('all', array(
                     'fields' => array(
-                        "TIMETZ(\"Weatherdiagram\".\"time\" AT TIME ZONE 'ICT') AS time,
+                        "TIMETZ(\"Weatherdiagram\".\"time\") AT TIME ZONE 'ICT' AS time,
                         DATE(\"Weatherdiagram\".\"time\" AT TIME ZONE 'ICT') AS date,
                         temperature_celsius,
                         dew_point_celsius,
