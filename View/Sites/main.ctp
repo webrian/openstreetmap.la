@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head profile="http://a9.com/-/spec/opensearch/1.1/">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="google-site-verification" content="cXvQfuOySAHBWbH1EvKsUGZk5S7_nU2f_lcG2rqZrr0" />
         <meta name="msvalidate.01" content="E23E53812CB2D24F8FC5D93E0828007D" />
         <title><?php echo __('OpenStreetMap Laos'); ?></title>
