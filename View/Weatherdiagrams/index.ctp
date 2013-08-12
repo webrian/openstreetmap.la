@@ -37,7 +37,7 @@
                     METAR data
                 </a>.
                 Data samples are collected every 30 minutes between 6.00 am and 9.00 pm.
-                Collection dates back to the 18<sup>th</sup> of January 2011.
+                Collection dates back to the 1<sup>st</sup> of January 2003.
             </div>
             <div>
                 A full database extract can be downloaded from
