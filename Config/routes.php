@@ -66,6 +66,9 @@ Router::connect('/tms/1.0.0/:layer',
 Router::connect('/tms/1.0.0/:layer/:zoom/:column/:row.png',
                array('controller' => 'tms', 'action' => 'tiles')
 );
+Router::connect('/tms/1.0.0/:layer/:zoom/:column/:row.jpeg',
+               array('controller' => 'tms', 'action' => 'tiles')
+);
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
