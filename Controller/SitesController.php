@@ -227,6 +227,10 @@ class SitesController extends AppController {
         return $lang;
     }
 
+    public function landsat8() {
+	return;
+    }
+
 }
 
 ?>

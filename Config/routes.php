@@ -63,12 +63,13 @@ Router::connect('/tms/1.0.0/services/tilemapservice.xml',
 Router::connect('/tms/1.0.0/:layer',
                array('controller' => 'tms', 'action' => 'tilemap')
 );
-Router::connect('/tms/1.0.0/:layer/:zoom/:column/:row.png',
+Router::connect('/tms/1.0.0/:layer/:zoom/:column/:row.:format',
                array('controller' => 'tms', 'action' => 'tiles')
 );
-Router::connect('/tms/1.0.0/:layer/:zoom/:column/:row.jpeg',
-               array('controller' => 'tms', 'action' => 'tiles')
+Router::connect('/landsat8',
+               array('controller' => 'sites', 'action' => 'landsat8')
 );
+
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 

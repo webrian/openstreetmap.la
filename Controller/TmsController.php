@@ -141,17 +141,32 @@ class TmsController extends AppController {
     public function tiles() {
         $this->tilesdir = ROOT . DS . "Data" . DS . "tiles";
 
-        $this->autoRender = false;
-        $this->response->type('image/png');
-
         $layer = $this->request->params['layer'];
         $zoom = $this->request->params['zoom'];
         $column = $this->request->params['column'];
         $row = $this->request->params['row'];
+        $format = $this->request->params['format'];
+
+        $this->autoRender = false;
+        switch($format) {
+            case "jpeg":
+                $this->response->type("image/jpeg");
+                break;
+            case "jpg":
+                $this->response->type("image/jpeg");
+            default:
+                $this->response->type('image/png');
+        }
 
         try {
-            // Open the database
-            $conn = new PDO("sqlite:$this->tilesdir/$layer/tiles.mbtiles");
+            // Open the database: Check first if there is a separate mbtiles
+            // database for the requested zoom level
+            if(file_exists($this->tilesdir . "/$layer/tiles.$zoom.mbtiles")){
+                 $dbpath = "sqlite:" . $this->tilesdir. "/$layer/tiles.$zoom.mbtiles";
+            } else {
+                 $dbpath = "sqlite:$this->tilesdir/$layer/tiles.mbtiles";
+            }
+            $conn = new PDO($dbpath);
 
             // Query the tiles view and echo out the returned image
             $sql = "SELECT * FROM tiles WHERE zoom_level = $zoom AND tile_column = $column AND tile_row = $row";
