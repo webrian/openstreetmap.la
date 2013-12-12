@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2013-04-29 22:40+0200\n"
+"POT-Creation-Date: 2013-12-11 20:48+0100\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -23,7 +23,7 @@ msgid "Edit"
 msgstr ""
 
 #: Controller/LangController.php:18
-#: View/Sites/main.ctp:131
+#: View/Sites/main.ctp:132
 msgid "Downloads"
 msgstr ""
 
@@ -127,117 +127,121 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: View/Sites/main.ctp:8;78
+#: Controller/LangController.php:48
+msgid "Satellite"
+msgstr ""
+
+#: View/Sites/main.ctp:9;79
 #: View/Weatherdiagrams/dev.ctp:8
 #: View/Weatherdiagrams/index.ctp:8
 msgid "OpenStreetMap Laos"
 msgstr ""
 
-#: View/Sites/main.ctp:81
+#: View/Sites/main.ctp:82
 msgid "The free wiki world map"
 msgstr ""
 
-#: View/Sites/main.ctp:96
+#: View/Sites/main.ctp:97
 msgid "Edit the map"
 msgstr ""
 
-#: View/Sites/main.ctp:101
+#: View/Sites/main.ctp:102
 msgid "Topographic Map TMS"
 msgstr ""
 
-#: View/Sites/main.ctp:103
+#: View/Sites/main.ctp:104
 msgid "Support in mapping geographical features provides the <a href=\"http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification\" class=\"external\">Tile Map Service</a>, which serves topographic maps for northern Laos. These topographic maps from the 1960ies were made by the US Army Map Service in the scales of 1:200000 and 1:50000. Meanwhile these maps are released to the public domain and available at the <a href=\"http://www.lib.utexas.edu/maps/laos.html\" class=\"external\">University of Texas Libraries</a>."
 msgstr ""
 
-#: View/Sites/main.ctp:106
+#: View/Sites/main.ctp:107
 msgid "The tile map service is accessible at:"
 msgstr ""
 
-#: View/Sites/main.ctp:111
+#: View/Sites/main.ctp:112
 msgid "To use these topographic maps in <a href=\"http://josm.openstreetmap.de/\" class=\"external\">JOSM</a> open the \"Imagery Preferences\" tab in the preferences dialog and add a new TMS entry."
 msgstr ""
 
-#: View/Sites/main.ctp:114
+#: View/Sites/main.ctp:115
 msgid "Use the following settings:"
 msgstr ""
 
-#: View/Sites/main.ctp:124
+#: View/Sites/main.ctp:125
 msgid "More detailed instructions on how to add custom imagery is available at"
 msgstr ""
 
-#: View/Sites/main.ctp:138;139;157;158
+#: View/Sites/main.ctp:139;140;158;159
 msgid "Complete database"
 msgstr ""
 
-#: View/Sites/main.ctp:140;159
+#: View/Sites/main.ctp:141;160
 msgid "Amenities"
 msgstr ""
 
-#: View/Sites/main.ctp:141;160
+#: View/Sites/main.ctp:142;161
 msgid "Buildings"
 msgstr ""
 
-#: View/Sites/main.ctp:142;161
+#: View/Sites/main.ctp:143;162
 msgid "Country"
 msgstr ""
 
-#: View/Sites/main.ctp:143;162
+#: View/Sites/main.ctp:144;163
 msgid "National Parks"
 msgstr ""
 
-#: View/Sites/main.ctp:144;163
+#: View/Sites/main.ctp:145;164
 msgid "Places"
 msgstr ""
 
-#: View/Sites/main.ctp:145;164
+#: View/Sites/main.ctp:146;165
 msgid "Provinces"
 msgstr ""
 
-#: View/Sites/main.ctp:146;165
+#: View/Sites/main.ctp:147;166
 msgid "Roads"
 msgstr ""
 
-#: View/Sites/main.ctp:147;166
+#: View/Sites/main.ctp:148;167
 msgid "Waterways"
 msgstr ""
 
-#: View/Sites/main.ctp:148;167
+#: View/Sites/main.ctp:149;168
 msgid "Waterbodies"
 msgstr ""
 
-#: View/Sites/main.ctp:149;168
+#: View/Sites/main.ctp:150;169
 msgid "Routable GPS map"
 msgstr ""
 
-#: View/Sites/main.ctp:150;151;169;170
+#: View/Sites/main.ctp:151;152;170;171
 msgid "Points of Interest"
 msgstr ""
 
-#: View/Sites/main.ctp:153
+#: View/Sites/main.ctp:154
 msgid "Laos"
 msgstr ""
 
-#: View/Sites/main.ctp:172
+#: View/Sites/main.ctp:173
 msgid "Cambodia"
 msgstr ""
 
-#: View/Sites/main.ctp:176
+#: View/Sites/main.ctp:177
 msgid "Content"
 msgstr ""
 
-#: View/Sites/main.ctp:176
+#: View/Sites/main.ctp:177
 msgid "Download Size"
 msgstr ""
 
-#: View/Sites/main.ctp:188
+#: View/Sites/main.ctp:189
 msgid "Last data update"
 msgstr ""
 
-#: View/Sites/main.ctp:206
+#: View/Sites/main.ctp:207
 msgid "unknown"
 msgstr ""
 
-#: View/Sites/main.ctp:214
+#: View/Sites/main.ctp:215
 msgid "About OpenStreetMap.la"
 msgstr ""
 

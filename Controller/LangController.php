@@ -37,6 +37,7 @@ class LangController extends AppController {
             'Add destination' => __('Add destination'),
             'Drag to change route or double click to remove' => __('Drag to change route or double click to remove'),
             'Loading...' => __('Loading...'),
+            'Satellite' => __('Satellite'),
             // Buttons
             'Lao' => __('Lao'),
             'English' => __('English'),
