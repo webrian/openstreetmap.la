@@ -91,9 +91,9 @@ class DirectionsController extends AppController {
             'here' => $this->request->here,
             'referer' => $this->request->referer(),
             'status' => 200,
-            'filesize' => strlen(json_encode($geoJson))
+            'filesize' => strlen(json_encode($content))
         );
-        CakeLog::write("apacihe_access", $message);
+        CakeLog::write("apache_access", $message);
     }
 
 }
