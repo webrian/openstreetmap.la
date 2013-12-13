@@ -1,0 +1,154 @@
+/* Indicate links that link to an external page */
+a.external {
+    background: url("/img/external-link-ltr-icon.png") no-repeat scroll right center transparent;
+    padding:0 13px 0 0;
+}
+.content {
+    padding-bottom: 7px;
+}
+.content ul {
+    margin-top: 0.5em;
+    text-indent: 10px;
+}
+.main-tab {
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.startmarker {
+    background-image: url('/img/startmarker-icon.png');
+    background-repeat: no-repeat;
+}
+.endmarker {
+    background-image: url('/img/endmarker-icon.png');
+    background-repeat: no-repeat;
+}
+.leaflet-container .leaflet-control-status {
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: 0 0 7px #CCCCCC;
+    color: #333333;
+    padding: 0 5px;
+    font: 13px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+/* route instructions result table */
+.result-table {
+    width: 100%;
+}
+/* even rows in the route instructions */
+.route-instructions-even {
+    background-color: #d3d3d3;
+}
+td.route-credit {
+    font-size: smaller;
+    text-align: right;
+}
+button.en-button {
+    background-image: url('/img/en.png');
+}
+button.lo-button {
+    background-image: url('/img/lo.png');
+}
+#language-label {
+    margin-right: 5px;
+}
+#get-directions-header {
+    padding: 5px;
+}
+.x-tab-panel-body {
+    background-color: #f1f1f1;
+}
+.x-panel-body {
+    background-color: #f1f1f1;
+}
+.x-panel-mc {
+    font: 13px tahoma,arial,helvetica,sans-serif;
+}
+/* icons in the auto-complete combobox */
+.x-poi-alcohol {
+    background-image: url('/img/icons/shop_convenience.p.16.png') !important;
+}
+.x-icon-combo-icon {
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+    width: 16px;
+    height: 16px;
+}
+.x-poi-atm {
+    background-image: url('/img/icons/atm2.p.16.png') !important;
+}
+.x-poi-bank {
+    background-image: url('/img/icons/bank2.p.16.png') !important;
+}
+.x-poi-bureau_de_change  {
+    background-image: url('/img/icons/bank2.p.16.png') !important;
+}
+.x-poi-bus_station {
+    background-image: url('/img/icons/bus_station.n.16.png') !important;
+}
+.x-poi-cafe {
+    background-image: url('/img/icons/cafe.p.16.png') !important;
+}
+.x-poi-city {
+    background-image: url('/img/icons/city.p.16.png') !important;
+}
+.x-poi-convenience {
+    background-image: url('/img/icons/shop_convenience.p.16.png') !important;
+}
+.x-poi-fast_food {
+    background-image: url('/img/icons/fast_food.png') !important;
+}
+.x-poi-fuel {
+    background-image: url('/img/icons/fuel.p.16.png') !important;
+}
+.x-poi-guest_house {
+    background-image: url('/img/icons/guest_house.p.16.png') !important;
+}
+.x-poi-hospital {
+    background-image: url('/img/icons/hospital.png') !important;
+}
+.x-poi-hotel {
+    background-image: url('/img/icons/hotel2.p.20.png') !important;
+}
+.x-poi-massage {
+    background-image: url('/img/icons/aw.frangipani.2.png') !important;
+}
+.x-poi-nightclub {
+    background-image: url('/img/icons/pub.p.16.png') !important;
+}
+.x-poi-pub {
+    background-image: url('/img/icons/pub.p.16.png') !important;
+}
+.x-poi-place_of_worship {
+    background-image: url('/img/icons/place_of_worship3.p.16.png') !important;
+}
+.x-poi-pharmacy {
+    background-image: url('/img/icons/pharmacy.p.16.png') !important;
+}
+.x-poi-restaurant {
+    background-image: url('/img/icons/restaurant.p.16.png') !important;
+}
+.x-poi-school {
+    background-image: url('/img/icons/school.png') !important;
+}
+.x-poi-town {
+    background-image: url('/img/icons/town.p.16.png') !important;
+}
+.x-poi-toilets {
+    background-image: url('/img/icons/toilets.p.16.png') !important;
+}
+.x-poi-travel_agency {
+    background-image: url('/img/icons/aw.travelagency.png') !important;
+}
+.x-poi-village {
+    background-image: url('/img/icons/village.p.16.png') !important;
+}
+.map-button {
+    background-image: url('/img/map_icon.16.png') !important;
+}
+.satellite-button {
+    background-image: url('/img/satellite_icon.16.png') !important;
+}
+.link-button {
+    background-image: url('/img/link_icon.16.png') !important;
+}
