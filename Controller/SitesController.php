@@ -184,6 +184,8 @@ class SitesController extends AppController {
             'filesize' => 3266
         );
         CakeLog::write("apache_access", $message);
+
+        $this->render($tab);
     }
 
     /**
