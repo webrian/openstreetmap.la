@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<?php echo $this->Html->docType("xhtml-strict"); ?>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <?php echo $this->Html->charset(); ?>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
@@ -139,31 +139,54 @@
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle btn" data-toggle="collapse" data-target=".navbar-collapse" style="height: 34px; padding: 5px 10px; margin-right: 10px;"><i class="fa fa-ellipsis-v" style="color: white"></i></button>
-                <button id="toggle" type="button" class="navbar-toggle btn" style="height: 34px; padding: 5px 10px; margin-right: 10px;"><i id="toggleIcon" class="fa fa-check-square-o" style="color: white"></i></button>
+                <?php
+                if ($this->request->url == 'map') {
+                    echo '<button id="toggle" type="button" class="navbar-toggle btn" style="height: 34px; padding: 5px 10px; margin-right: 10px;"><i id="toggleIcon" class="fa fa-check-square-o" style="color: white"></i></button>';
+                }
+                ?>
                 <a class="navbar-brand" href="<?php echo $this->Html->url(array('controller' => 'sites', 'action' => 'main')); ?>">OpenStreetMap.la</a>
             </div>
             <div class="navbar-collapse collapse" id="navbar-collapse">
-                <form class="navbar-form navbar-right">
-                    <div class="input-group search-container">
-                        <input id="searchbox" type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    </div>
-                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <?php
+                        if ($lang == "en") {
+                            $url = $this->Html->url(array($this->request->url, "?" => array("lang" => "lo")));
+                            echo "<a href=\"$url\"><i class=\"fa fa-flag\"></i>&nbsp;&nbsp;ພາສາລາວ</a></li>";
+                        } else {
+                            $url = $this->Html->url(array($this->request->url, "?" => array("lang" => "en")));
+                            echo "<a href=\"$url\"><i class=\"fa fa-flag\"></i>&nbsp;&nbsp;English</a></li>";
+                        }
+                        ?>
+                    </li>
+                </ul>
                 <ul class="nav navbar-nav">
                     <!-- Edit menu -->
-                    <li class="active">
+                    <li <?php
+                        if ($this->request->url == "edit") {
+                            echo "class=\"active\"";
+                        }
+                        ?>>
                         <a href="<?php echo $this->Html->url(array('controller' => 'sites', 'action' => 'main', 'edit')); ?>">
                             <i class="fa fa-pencil-square-o fa-lg" style="color: white"></i>&nbsp;&nbsp;<?php echo __('Edit'); ?>
                         </a>
                     </li>
-                    <!-- Download menu -->
-                    <li class="active">
+                    <!-- Downloads menu -->
+                    <li <?php
+                        if ($this->request->url == "downloads") {
+                            echo "class=\"active\"";
+                        }
+                        ?>>
                         <a href="<?php echo $this->Html->url(array('controller' => 'sites', 'action' => 'main', 'downloads')); ?>">
                             <i class="fa fa-cloud-download fa-lg" style="color: white"></i>&nbsp;&nbsp;<?php echo __('Downloads'); ?>
                         </a>
                     </li>
                     <!-- About menu -->
-                    <li>
+                    <li <?php
+                        if ($this->request->url == "about") {
+                            echo "class=\"active\"";
+                        }
+                        ?>>
                         <a href="<?php echo $this->Html->url(array('controller' => 'sites', 'action' => 'main', 'about')); ?>" data-toggle="collapse" data-target=".navbar-collapse.in">
                             <i class="fa fa-question-circle fa-lg" style="color: white"></i>&nbsp;&nbsp;<?php echo __('About this page'); ?>
                         </a>

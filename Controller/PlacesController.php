@@ -29,6 +29,7 @@ class PlacesController extends AppController {
     }
 
     public function index() {
+        $this->layout = "empty";
         // Set the content type to json
         $this->response->type('application/json');
         $result = $this->searchPlace();
