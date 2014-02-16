@@ -3,12 +3,14 @@
 
         <!-- map layer toggle button group -->
         <div class="btn-group" style="margin-bottom: 10px;">
-            <button type="button" class="btn btn-default active" id="streets-button">Streets</button>
-            <button type="button" class="btn btn-default" id="hybrid-button">Hybrid</button>
+            <button type="button" class="btn btn-default active" id="streets-button">
+                <i class="icon-streets icon-lg"></i>&nbsp;&nbsp;Streets</button>
+            <button type="button" class="btn btn-default" id="hybrid-button">
+                <i class="icon-hybrid icon-lg"></i>&nbsp;&nbsp;Hybrid</button>
         </div>
 
-        <div class="input-group search-container" style="margin-bottom: 10px; width: 100%;">
-            <input id="searchbox" type="text" class="form-control" placeholder="Search">
+        <div class="input-group search-container" style="margin-bottom: 10px;"> <!-- width: 100%;"-->
+            <input id="searchbox" type="text" class="form-control" placeholder="<?php echo __("Search places"); ?>">
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
         </div>
     </div>
@@ -26,18 +28,55 @@
 <!--script type="text/javascript" src="assets/typeahead.js/typeahead.min.js"></script> <!--https://github.com/twitter/typeahead.js/-->
 
 <?php
+
+// Custom icon fonts
+echo $this->Html->css(array("customfonts.css", "mapnik-icons.css", "map.css"));
+// Include jquery and bootstrap JavaScript file
+echo $this->Html->script(array('jquery-1.10.2.min.js', 'bootstrap-3.0.3/bootstrap.min.js', 'typeahead.bundle.min.js', 'leaflet-0.5.1/leaflet.js'));
+
 if ($lang == "lo") {
     $osmtoolsUrl = "http://{s}.laostile.osm-tools.org/osm_th/{z}/{x}/{y}.png";
 } else {
     $osmtoolsUrl = "http://{s}.laostile.osm-tools.org/osm_en/{z}/{x}/{y}.png";
 }
 
+$scriptBlock = "var osmtoolsUrl = \"$osmtoolsUrl\";";
+$scriptBlock .= "var initLang='$lang';";
+$scriptBlock .= "var initCenter=new L.LatLng($lat, $lng);";
+if (!empty($mlat) && !empty($mlng)) {
+    $scriptBlock .= "var initMarker=new L.LatLng($mlat, $mlng);";
+} else {
+    $scriptBlock .= "var initMarker=null;";
+}
+$scriptBlock .= "var initZoom=$zoom;";
 
-echo $this->Html->scriptBlock("var osmtoolsUrl = \"$osmtoolsUrl\";", array('safe' => false));
 
-// Include jquery and bootstrap JavaScript file
-echo $this->Html->script(array('jquery-1.10.2.min.js', 'bootstrap-3.0.3/bootstrap.min.js', 'typeahead.bundle.min.js', 'leaflet-0.5.1/leaflet.js'));
+if (!empty($startCoords)) {
+    $scriptBlock .= "var initStart=new L.LatLng($startCoords[0], $startCoords[1]);";
+} else {
+    $scriptBlock .= "var initStart=null;";
+}
+if (!empty($destCoords)) {
+    $scriptBlock .= "var initDest=new L.LatLng($destCoords[0], $destCoords[1]);";
+} else {
+    $scriptBlock .= "var initDest=null;";
+}
+if (!empty($viaCoords) && count($viaCoords) > 0) {
+    $scriptBlock .= "var initVias=[";
+    for ($i = 0; $i < count($viaCoords); $i++) {
+        $viaCoord = $viaCoords[$i];
+        $scriptBlock .= "new L.LatLng($viaCoord[0], $viaCoord[1])";
+        if ($i < (count($viaCoords) - 1)) {
+           $scriptBlock .= ",";
+        }
+    }
+    $scriptBlock .= "];";
+} else {
+    $scriptBlock .= "var initVias=null;";
+}
+$scriptBlock .= "\n";
 
+echo $this->Html->scriptBlock($scriptBlock);
 
 $date = date_create();
 if (Configure::read("debug") == 0) {

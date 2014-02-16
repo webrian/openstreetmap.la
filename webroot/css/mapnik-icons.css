@@ -1,0 +1,854 @@
+@font-face {
+	font-family: 'mapnik-icons';
+	src:url('fonts/mapnik-icons.eot?-ao73nt');
+	src:url('fonts/mapnik-icons.eot?#iefix-ao73nt') format('embedded-opentype'),
+		url('fonts/mapnik-icons.woff?-ao73nt') format('woff'),
+		url('fonts/mapnik-icons.ttf?-ao73nt') format('truetype'),
+		url('fonts/mapnik-icons.svg?-ao73nt#mapnik-icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="mapnik-icon-"], [class*=" mapnik-icon-"] {
+	font-family: 'mapnik-icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.mapnik-icon-village:before {
+	content: "\e67c";
+}
+.mapnik-icon-guest_house:before {
+	content: "\e600";
+}
+
+/*
+
+.mapnik-icon-shelter:before {
+	content: "\e601";
+}
+.mapnik-icon-shelter2:before {
+	content: "\e602";
+}
+.mapnik-icon-motel:before {
+	content: "\e603";
+}
+.mapnik-icon-hotel2:before {
+	content: "\e604";
+}
+.mapnik-icon-hotel:before {
+	content: "\e605";
+}
+.mapnik-icon-hostel:before {
+	content: "\e606";
+}
+.mapnik-icon-chalet2:before {
+	content: "\e607";
+}
+.mapnik-icon-chalet:before {
+	content: "\e608";
+}
+.mapnik-icon-caravan_park:before {
+	content: "\e609";
+}
+.mapnik-icon-camping:before {
+	content: "\e60a";
+}
+.mapnik-icon-bed_and_breakfast2:before {
+	content: "\e60b";
+}
+.mapnik-icon-bed_and_breakfast:before {
+	content: "\e60c";
+}
+.mapnik-icon-alpinehut:before {
+	content: "\e60d";
+}
+.mapnik-icon-town_hall2:before {
+	content: "\e60e";
+}
+.mapnik-icon-police2:before {
+	content: "\e60f";
+}
+.mapnik-icon-police:before {
+	content: "\e610";
+}
+.mapnik-icon-town_hall:before {
+	content: "\e611";
+}
+.mapnik-icon-toilets_women:before {
+	content: "\e612";
+}
+.mapnik-icon-playground:before {
+	content: "\e613";
+}
+.mapnik-icon-library2:before {
+	content: "\e614";
+}
+.mapnik-icon-toilets_men:before {
+	content: "\e615";
+}
+.mapnik-icon-toilets_disabled:before {
+	content: "\e616";
+}
+.mapnik-icon-library:before {
+	content: "\e617";
+}
+.mapnik-icon-fountain2:before {
+	content: "\e618";
+}
+.mapnik-icon-toilets:before {
+	content: "\e619";
+}
+.mapnik-icon-telephone:before {
+	content: "\e61a";
+}
+.mapnik-icon-fountain:before {
+	content: "\e61b";
+}
+.mapnik-icon-firestation3:before {
+	content: "\e61c";
+}
+.mapnik-icon-survey_point:before {
+	content: "\e61d";
+}
+.mapnik-icon-recycling:before {
+	content: "\e61e";
+}
+.mapnik-icon-firestation2:before {
+	content: "\e61f";
+}
+.mapnik-icon-firestation:before {
+	content: "\e620";
+}
+.mapnik-icon-public_building2:before {
+	content: "\e621";
+}
+.mapnik-icon-public_building:before {
+	content: "\e622";
+}
+.mapnik-icon-court:before {
+	content: "\e623";
+}
+.mapnik-icon-bench:before {
+	content: "\e624";
+}
+.mapnik-icon-prison:before {
+	content: "\e625";
+}
+.mapnik-icon-post_office:before {
+	content: "\e626";
+}
+.mapnik-icon-post_box:before {
+	content: "\e627";
+}
+.mapnik-icon-blocks:before {
+	content: "\e628";
+}
+.mapnik-icon-bollard:before {
+	content: "\e629";
+}
+.mapnik-icon-cattle_grid:before {
+	content: "\e62a";
+}
+.mapnik-icon-cycle_barrier:before {
+	content: "\e62b";
+}
+.mapnik-icon-entrance:before {
+	content: "\e62c";
+}
+.mapnik-icon-exit:before {
+	content: "\e62d";
+}
+.mapnik-icon-gate:before {
+	content: "\e62e";
+}
+.mapnik-icon-kissing_gate:before {
+	content: "\e62f";
+}
+.mapnik-icon-lift_gate:before {
+	content: "\e630";
+}
+.mapnik-icon-steps:before {
+	content: "\e631";
+}
+.mapnik-icon-stile:before {
+	content: "\e632";
+}
+.mapnik-icon-toll_booth:before {
+	content: "\e633";
+}
+.mapnik-icon-college:before {
+	content: "\e634";
+}
+.mapnik-icon-college_vocational:before {
+	content: "\e635";
+}
+.mapnik-icon-nursery:before {
+	content: "\e636";
+}
+.mapnik-icon-nursery2:before {
+	content: "\e637";
+}
+.mapnik-icon-nursery3:before {
+	content: "\e638";
+}
+.mapnik-icon-school:before {
+	content: "\e639";
+}
+.mapnik-icon-school_primary:before {
+	content: "\e63a";
+}
+.mapnik-icon-school_secondary:before {
+	content: "\e63b";
+}
+.mapnik-icon-university:before {
+	content: "\e63c";
+}
+.mapnik-icon-cafe:before {
+	content: "\e63d";
+}
+.mapnik-icon-drinkingtap:before {
+	content: "\e63e";
+}
+.mapnik-icon-fastfood:before {
+	content: "\e63f";
+}
+.mapnik-icon-fastfood2:before {
+	content: "\e640";
+}
+.mapnik-icon-fastfood_pizza:before {
+	content: "\e641";
+}
+.mapnik-icon-ice_cream:before {
+	content: "\e642";
+}
+.mapnik-icon-pizza:before {
+	content: "\e643";
+}
+.mapnik-icon-pub:before {
+	content: "\e644";
+}
+.mapnik-icon-dentist:before {
+	content: "\e645";
+}
+.mapnik-icon-doctors:before {
+	content: "\e646";
+}
+.mapnik-icon-doctors2:before {
+	content: "\e647";
+}
+.mapnik-icon-hospital:before {
+	content: "\e648";
+}
+.mapnik-icon-hospital_emergency:before {
+	content: "\e649";
+}
+.mapnik-icon-hospital_emergency2:before {
+	content: "\e64a";
+}
+.mapnik-icon-opticians:before {
+	content: "\e64b";
+}
+.mapnik-icon-pharmacy:before {
+	content: "\e64c";
+}
+.mapnik-icon-pharmacy_dispensing:before {
+	content: "\e64d";
+}
+.mapnik-icon-veterinary:before {
+	content: "\e64e";
+}
+.mapnik-icon-coniferous:before {
+	content: "\e64f";
+}
+.mapnik-icon-coniferous_and_deciduous:before {
+	content: "\e650";
+}
+.mapnik-icon-deciduous:before {
+	content: "\e651";
+}
+.mapnik-icon-grass:before {
+	content: "\e652";
+}
+.mapnik-icon-hills:before {
+	content: "\e653";
+}
+.mapnik-icon-quary:before {
+	content: "\e654";
+}
+.mapnik-icon-scrub:before {
+	content: "\e655";
+}
+.mapnik-icon-swamp:before {
+	content: "\e656";
+}
+.mapnik-icon-atm:before {
+	content: "\e657";
+}
+.mapnik-icon-atm2:before {
+	content: "\e658";
+}
+.mapnik-icon-bank:before {
+	content: "\e659";
+}
+.mapnik-icon-bank2:before {
+	content: "\e65a";
+}
+.mapnik-icon-currency_exchange:before {
+	content: "\e65b";
+}
+.mapnik-icon-bahai:before {
+	content: "\e65c";
+}
+.mapnik-icon-bahai3:before {
+	content: "\e65d";
+}
+.mapnik-icon-buddhist:before {
+	content: "\e65e";
+}
+.mapnik-icon-buddhist3:before {
+	content: "\e65f";
+}
+.mapnik-icon-christian:before {
+	content: "\e660";
+}
+.mapnik-icon-christian3:before {
+	content: "\e661";
+}
+.mapnik-icon-unknown3:before {
+	content: "\e662";
+}
+.mapnik-icon-unknown:before {
+	content: "\e663";
+}
+.mapnik-icon-sikh3:before {
+	content: "\e664";
+}
+.mapnik-icon-sikh:before {
+	content: "\e665";
+}
+.mapnik-icon-shinto3:before {
+	content: "\e666";
+}
+.mapnik-icon-shinto:before {
+	content: "\e667";
+}
+.mapnik-icon-jewish3:before {
+	content: "\e668";
+}
+.mapnik-icon-jewish:before {
+	content: "\e669";
+}
+.mapnik-icon-jain3:before {
+	content: "\e66a";
+}
+.mapnik-icon-jain:before {
+	content: "\e66b";
+}
+.mapnik-icon-islamic3:before {
+	content: "\e66c";
+}
+.mapnik-icon-islamic:before {
+	content: "\e66d";
+}
+.mapnik-icon-hindu3:before {
+	content: "\e66e";
+}
+.mapnik-icon-hindu:before {
+	content: "\e66f";
+}
+.mapnik-icon-boundary_administrative:before {
+	content: "\e670";
+}
+.mapnik-icon-cave:before {
+	content: "\e671";
+}
+.mapnik-icon-crane:before {
+	content: "\e672";
+}
+.mapnik-icon-embassy:before {
+	content: "\e673";
+}
+.mapnik-icon-embassy2:before {
+	content: "\e674";
+}
+.mapnik-icon-military_bunker:before {
+	content: "\e675";
+}
+.mapnik-icon-mine:before {
+	content: "\e676";
+}
+.mapnik-icon-tower_water:before {
+	content: "\e677";
+}
+.mapnik-icon-tower_power:before {
+	content: "\e678";
+}
+.mapnik-icon-tower_lookout:before {
+	content: "\e679";
+}
+.mapnik-icon-tower_communications:before {
+	content: "\e67a";
+}
+.mapnik-icon-point_of_interest:before {
+	content: "\e67b";
+}
+.mapnik-icon-place_town:before {
+	content: "\e67d";
+}
+.mapnik-icon-place_suburb:before {
+	content: "\e67e";
+}
+.mapnik-icon-place_hamlet:before {
+	content: "\e67f";
+}
+.mapnik-icon-place_city:before {
+	content: "\e680";
+}
+.mapnik-icon-peak2:before {
+	content: "\e681";
+}
+.mapnik-icon-peak:before {
+	content: "\e682";
+}
+.mapnik-icon-mountain_pass:before {
+	content: "\e683";
+}
+.mapnik-icon-mine_abandoned:before {
+	content: "\e684";
+}
+.mapnik-icon-transformer:before {
+	content: "\e685";
+}
+.mapnik-icon-tower_low:before {
+	content: "\e686";
+}
+.mapnik-icon-tower_high2:before {
+	content: "\e687";
+}
+.mapnik-icon-tower_high:before {
+	content: "\e688";
+}
+.mapnik-icon-substation:before {
+	content: "\e689";
+}
+.mapnik-icon-station_wind:before {
+	content: "\e68a";
+}
+.mapnik-icon-station_water:before {
+	content: "\e68b";
+}
+.mapnik-icon-station_solar:before {
+	content: "\e68c";
+}
+.mapnik-icon-station_gas:before {
+	content: "\e68d";
+}
+.mapnik-icon-station_coal:before {
+	content: "\e68e";
+}
+.mapnik-icon-alcohol:before {
+	content: "\e68f";
+}
+.mapnik-icon-bakery:before {
+	content: "\e690";
+}
+.mapnik-icon-estateagent:before {
+	content: "\e691";
+}
+.mapnik-icon-laundrette:before {
+	content: "\e692";
+}
+.mapnik-icon-video_rental:before {
+	content: "\e693";
+}
+.mapnik-icon-vending_machine:before {
+	content: "\e694";
+}
+.mapnik-icon-kiosk:before {
+	content: "\e695";
+}
+.mapnik-icon-diy:before {
+	content: "\e696";
+}
+.mapnik-icon-department_store:before {
+	content: "\e697";
+}
+.mapnik-icon-jewelry2:before {
+	content: "\e698";
+}
+.mapnik-icon-toys:before {
+	content: "\e699";
+}
+.mapnik-icon-tobacco:before {
+	content: "\e69a";
+}
+.mapnik-icon-jewelry:before {
+	content: "\e69b";
+}
+.mapnik-icon-copyshop:before {
+	content: "\e69c";
+}
+.mapnik-icon-tackle:before {
+	content: "\e69d";
+}
+.mapnik-icon-convenience:before {
+	content: "\e69e";
+}
+.mapnik-icon-hifi:before {
+	content: "\e69f";
+}
+.mapnik-icon-confectionery:before {
+	content: "\e6a0";
+}
+.mapnik-icon-hearing_aids:before {
+	content: "\e6a1";
+}
+.mapnik-icon-supermarket:before {
+	content: "\e6a2";
+}
+.mapnik-icon-photo:before {
+	content: "\e6a3";
+}
+.mapnik-icon-hairdresser:before {
+	content: "\e6a4";
+}
+.mapnik-icon-computer:before {
+	content: "\e6a5";
+}
+.mapnik-icon-clothes:before {
+	content: "\e6a6";
+}
+.mapnik-icon-greengrocer:before {
+	content: "\e6a7";
+}
+.mapnik-icon-pet2:before {
+	content: "\e6a8";
+}
+.mapnik-icon-pet:before {
+	content: "\e6a9";
+}
+.mapnik-icon-gift:before {
+	content: "\e6aa";
+}
+.mapnik-icon-car_repair:before {
+	content: "\e6ab";
+}
+.mapnik-icon-car:before {
+	content: "\e6ac";
+}
+.mapnik-icon-garden_centre:before {
+	content: "\e6ad";
+}
+.mapnik-icon-newspaper:before {
+	content: "\e6ae";
+}
+.mapnik-icon-music:before {
+	content: "\e6af";
+}
+.mapnik-icon-florist:before {
+	content: "\e6b0";
+}
+.mapnik-icon-butcher2:before {
+	content: "\e6b1";
+}
+.mapnik-icon-butcher:before {
+	content: "\e6b2";
+}
+.mapnik-icon-fish:before {
+	content: "\e6b3";
+}
+.mapnik-icon-motorcycle:before {
+	content: "\e6b4";
+}
+.mapnik-icon-mobile_phone:before {
+	content: "\e6b5";
+}
+.mapnik-icon-estateagent3:before {
+	content: "\e6b6";
+}
+.mapnik-icon-book:before {
+	content: "\e6b7";
+}
+.mapnik-icon-bicycle:before {
+	content: "\e6b8";
+}
+.mapnik-icon-estateagent2:before {
+	content: "\e6b9";
+}
+.mapnik-icon-marketplace:before {
+	content: "\e6ba";
+}
+.mapnik-icon-archery:before {
+	content: "\e6bb";
+}
+.mapnik-icon-canoe:before {
+	content: "\e6bc";
+}
+.mapnik-icon-baseball:before {
+	content: "\e6bd";
+}
+.mapnik-icon-cricket:before {
+	content: "\e6be";
+}
+.mapnik-icon-diving:before {
+	content: "\e6bf";
+}
+.mapnik-icon-golf:before {
+	content: "\e6c0";
+}
+.mapnik-icon-archaeological:before {
+	content: "\e6c1";
+}
+.mapnik-icon-archaeological2:before {
+	content: "\e6c2";
+}
+.mapnik-icon-art_gallery:before {
+	content: "\e6c3";
+}
+.mapnik-icon-art_gallery2:before {
+	content: "\e6c4";
+}
+.mapnik-icon-attraction:before {
+	content: "\e6c5";
+}
+.mapnik-icon-battlefield:before {
+	content: "\e6c6";
+}
+.mapnik-icon-beach:before {
+	content: "\e6c7";
+}
+.mapnik-icon-night_club:before {
+	content: "\e6c8";
+}
+.mapnik-icon-museum:before {
+	content: "\e6c9";
+}
+.mapnik-icon-monument:before {
+	content: "\e6ca";
+}
+.mapnik-icon-memorial:before {
+	content: "\e6cb";
+}
+.mapnik-icon-map:before {
+	content: "\e6cc";
+}
+.mapnik-icon-information:before {
+	content: "\e6cd";
+}
+.mapnik-icon-guidepost:before {
+	content: "\e6ce";
+}
+.mapnik-icon-fountain3:before {
+	content: "\e6cf";
+}
+.mapnik-icon-clock:before {
+	content: "\e6d0";
+}
+.mapnik-icon-cinema2:before {
+	content: "\e6d1";
+}
+.mapnik-icon-cinema:before {
+	content: "\e6d2";
+}
+.mapnik-icon-castle2:before {
+	content: "\e6d3";
+}
+.mapnik-icon-castle:before {
+	content: "\e6d4";
+}
+.mapnik-icon-casino:before {
+	content: "\e6d5";
+}
+.mapnik-icon-night_club_gay:before {
+	content: "\e6d6";
+}
+.mapnik-icon-night_club_lesbian:before {
+	content: "\e6d7";
+}
+.mapnik-icon-picnic:before {
+	content: "\e6d8";
+}
+.mapnik-icon-ruin:before {
+	content: "\e6d9";
+}
+.mapnik-icon-steam_train:before {
+	content: "\e6da";
+}
+.mapnik-icon-theatre:before {
+	content: "\e6db";
+}
+.mapnik-icon-theme_park:before {
+	content: "\e6dc";
+}
+.mapnik-icon-view_point:before {
+	content: "\e6dd";
+}
+.mapnik-icon-waterwheel:before {
+	content: "\e6de";
+}
+.mapnik-icon-wayside_cross:before {
+	content: "\e6df";
+}
+.mapnik-icon-wayside_shrine:before {
+	content: "\e6e0";
+}
+.mapnik-icon-windmill:before {
+	content: "\e6e1";
+}
+.mapnik-icon-wreck:before {
+	content: "\e6e2";
+}
+.mapnik-icon-zoo:before {
+	content: "\e6e3";
+}
+.mapnik-icon-aerodrome:before {
+	content: "\e6e4";
+}
+.mapnik-icon-aerodrome2:before {
+	content: "\e6e5";
+}
+.mapnik-icon-helicopter_pad:before {
+	content: "\e6e6";
+}
+.mapnik-icon-helicopter:before {
+	content: "\e6e7";
+}
+.mapnik-icon-fuel_lpg:before {
+	content: "\e6e8";
+}
+.mapnik-icon-fuel:before {
+	content: "\e6e9";
+}
+.mapnik-icon-ford:before {
+	content: "\e6ea";
+}
+.mapnik-icon-emergency_phone:before {
+	content: "\e6eb";
+}
+.mapnik-icon-car_share:before {
+	content: "\e6ec";
+}
+.mapnik-icon-bus_stop2:before {
+	content: "\e6ed";
+}
+.mapnik-icon-bus_stop:before {
+	content: "\e6ee";
+}
+.mapnik-icon-bus_station:before {
+	content: "\e6ef";
+}
+.mapnik-icon-airport_terminal:before {
+	content: "\e6f0";
+}
+.mapnik-icon-airport_gate:before {
+	content: "\e6f1";
+}
+.mapnik-icon-airport2:before {
+	content: "\e6f2";
+}
+.mapnik-icon-airport:before {
+	content: "\e6f3";
+}
+.mapnik-icon-lighthouse:before {
+	content: "\e6f4";
+}
+.mapnik-icon-marina:before {
+	content: "\e6f5";
+}
+.mapnik-icon-miniroundabout_anticlockwise:before {
+	content: "\e6f6";
+}
+.mapnik-icon-miniroundabout_clockwise:before {
+	content: "\e6f7";
+}
+.mapnik-icon-parking:before {
+	content: "\e6f8";
+}
+.mapnik-icon-parking_bicycle:before {
+	content: "\e6f9";
+}
+.mapnik-icon-parking_car:before {
+	content: "\e6fa";
+}
+.mapnik-icon-parking_car_paid:before {
+	content: "\e6fb";
+}
+.mapnik-icon-parking_disabled:before {
+	content: "\e6fc";
+}
+.mapnik-icon-parking_private2:before {
+	content: "\e6fd";
+}
+.mapnik-icon-parking_private:before {
+	content: "\e6fe";
+}
+.mapnik-icon-parking_private3:before {
+	content: "\e6ff";
+}
+.mapnik-icon-port:before {
+	content: "\e700";
+}
+.mapnik-icon-rental_bicycle:before {
+	content: "\e701";
+}
+.mapnik-icon-zebra_crossing:before {
+	content: "\e702";
+}
+.mapnik-icon-walking:before {
+	content: "\e703";
+}
+.mapnik-icon-turning_circle:before {
+	content: "\e704";
+}
+.mapnik-icon-tram_stop:before {
+	content: "\e705";
+}
+.mapnik-icon-train_station2:before {
+	content: "\e706";
+}
+.mapnik-icon-train_station:before {
+	content: "\e707";
+}
+.mapnik-icon-traffic_lights:before {
+	content: "\e708";
+}
+.mapnik-icon-taxi_rank:before {
+	content: "\e709";
+}
+.mapnik-icon-subway:before {
+	content: "\e70a";
+}
+.mapnik-icon-speedbump:before {
+	content: "\e70b";
+}
+.mapnik-icon-slipway:before {
+	content: "\e70c";
+}
+.mapnik-icon-roundabout_clockwise:before {
+	content: "\e70d";
+}
+.mapnik-icon-roundabout_anticlockwise:before {
+	content: "\e70e";
+}
+.mapnik-icon-rental_car:before {
+	content: "\e70f";
+}
+.mapnik-icon-dam:before {
+	content: "\e710";
+}
+.mapnik-icon-tower:before {
+	content: "\e711";
+}
+.mapnik-icon-weir:before {
+	content: "\e712";
+}
+*/

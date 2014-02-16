@@ -16,6 +16,7 @@
             "font-awesome-4.0.3/font-awesome.min.css",
             //"typeahead.js/typeahead.js-bootstrap.css",
             "leaflet-0.5.1/leaflet.css"));
+        echo $this->fetch("css");
         ?>
 
         <!--Custom styles for this template-->

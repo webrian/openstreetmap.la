@@ -1,0 +1,15 @@
+.streets-icon {
+    background-image: url("../img/map_icon.16.png");
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+.tt-suggestion {
+    background-color: lightgray;
+    border: #000;
+}
+
+.tt-cursor {
+    background-color: gray;
+}
