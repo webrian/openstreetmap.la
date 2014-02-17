@@ -1,8 +1,28 @@
+// in the upper right corner of the map
+L.Control.Status = L.Control.Attribution.extend({
+    options: {
+        position: 'topright'
+    },
+    initialize: function(options) {
+        L.Util.setOptions(this, options);
+    },
+    onAdd: function(map){
+        this._container = L.DomUtil.create('div', 'leaflet-control-status');
+        this._map = map;
+        this._attributions = {};
+        this._update();
+        return this._container;
+    },
+    setText: function(text){
+        $(".leaflet-control-status").html("<div>" + text + "</div>");
+    }
+});
+
 // Extend L.Marker to set some default mouseover and mouseout events
 L.OsmMarker = L.Marker.extend({
     options: {
-        //mouseoverText: Ext.ux.ts.tr('Drag to change route or double click to remove'),
-        //mouseoutText: '',
+        mouseoverText: 'Drag to change route or double click to remove',
+        mouseoutText: '',
         draggable: true,
         ctrl: null
     },
@@ -40,6 +60,10 @@ L.EndIcon = L.Icon.extend({
     }
 });
 
+function setLocationValue(latLng) {
+    return "Lat: " + Math.round(latLng.lat*10000)/10000 + ", Lon: " + Math.round(latLng.lng*10000)/10000;
+}
+
 function addPlaceMarker(latLng, panTo){
     // First remove an existing place marker (if any)
     if(placemarker) {
@@ -47,20 +71,37 @@ function addPlaceMarker(latLng, panTo){
     }
 
     placemarker = new L.OsmMarker(latLng,{
-        //ctrl: statusControl,
-        //mouseoverText: Ext.ux.ts.tr('Double click to remove')
+        ctrl: statusControl,
+        mouseoverText: 'Double click to remove'
     });
     placemarker.on('dblclick', function(evt){
-        //clearPlaceMarker();
+        clearPlaceMarker();
     });
     placemarker.on('dragend', function(evt){
         // Update the start combo field after dragend
-        //searchComboBox.setLocationValue(placemarker.getLatLng());
+        $("#searchbox").val(setLocationValue(placemarker.getLatLng()));
     });
     map.addLayer(placemarker);
 
     if(panTo) {
         map.panTo(latLng);
+    }
+}
+
+function clearPlaceMarker() {
+    if(placemarker){
+        map.removeLayer(placemarker);
+        placemarker = null;
+    }
+    $("#searchbox").val("");
+}
+
+function toggleDirectionsPanel(id){
+    var p = $("#" + id).find(".panel-body");
+    if(p.hasClass("hidden")){
+        p.removeClass("hidden");
+    } else {
+        p.addClass("hidden");
     }
 }
 
@@ -109,6 +150,11 @@ map = L.map("map", {
     center: initCenter,
     layers: [osmLayer]
 });
+
+// Create the status control and reset the text
+var statusControl = new L.Control.Status();
+map.addControl(statusControl);
+statusControl.setText('');
 
 $("#toggle").click(function() {
     $("#toggle i").toggleClass("fa fa-check-square-o fa fa-map-marker");

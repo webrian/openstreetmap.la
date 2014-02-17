@@ -9,10 +9,34 @@
                 <i class="icon-hybrid icon-lg"></i>&nbsp;&nbsp;Hybrid</button>
         </div>
 
-        <div class="input-group search-container" style="margin-bottom: 10px;"> <!-- width: 100%;"-->
-            <input id="searchbox" type="text" class="form-control" placeholder="<?php echo __("Search places"); ?>">
-            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        <div id="searchPanel" class="panel panel-default collapsible-panel">
+            <div class="panel-heading">
+                <a href="#" onclick="javascript:toggleDirectionsPanel('searchPanel')"><?php echo __("Find places"); ?></a>
+            </div>
+            <div class="panel-body hidden">
+                <div class="input-group search-container" style="margin-bottom: 10px; width: 100%;">
+                    <input id="searchbox" type="text" class="form-control" placeholder="<?php echo __("Enter village, amenity, shop, etc."); ?>">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                </div>
+            </div>
         </div>
+
+        <div id="directionsPanel" class="panel panel-default collapsible-panel">
+            <div class="panel-heading">
+                <a href="#" onclick="javascript:toggleDirectionsPanel('directionsPanel')">Get directions</a>
+            </div>
+            <div class="panel-body hidden">
+                <div class="input-group search-container" style="margin-bottom: 10px; width: 100%;">
+                    <input id="searchbox" type="text" class="form-control" placeholder="<?php echo __("Search places"); ?>">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                </div>
+                <div class="input-group search-container" style="margin-bottom: 10px; width: 100%;">
+                    <input id="searchbox" type="text" class="form-control" placeholder="<?php echo __("Search places"); ?>">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="col-sm-9 col-lg-9" id="map">
         <!--div id="loading" style="display: block;">
@@ -28,7 +52,6 @@
 <!--script type="text/javascript" src="assets/typeahead.js/typeahead.min.js"></script> <!--https://github.com/twitter/typeahead.js/-->
 
 <?php
-
 // Custom icon fonts
 echo $this->Html->css(array("customfonts.css", "mapnik-icons.css", "map.css"));
 // Include jquery and bootstrap JavaScript file
@@ -67,7 +90,7 @@ if (!empty($viaCoords) && count($viaCoords) > 0) {
         $viaCoord = $viaCoords[$i];
         $scriptBlock .= "new L.LatLng($viaCoord[0], $viaCoord[1])";
         if ($i < (count($viaCoords) - 1)) {
-           $scriptBlock .= ",";
+            $scriptBlock .= ",";
         }
     }
     $scriptBlock .= "];";
