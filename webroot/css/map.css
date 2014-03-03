@@ -17,3 +17,12 @@ span.twitter-typeahead {
 .tt-cursor {
     background-color: gray;
 }
+
+.startmarker {
+    /*background-image: url('/img/startmarker-icon.png');
+    background-repeat: no-repeat;*/
+}
+.endmarker {
+    /*background-image: url('/img/endmarker-icon.png');
+    background-repeat: no-repeat;*/
+}

@@ -9,7 +9,22 @@
                 <i class="icon-hybrid icon-lg"></i>&nbsp;&nbsp;Hybrid</button>
         </div>
 
-        <div id="searchPanel" class="panel panel-default collapsible-panel">
+        <div class="row">
+            <div class="col-md-11">
+                <h4>Find places</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-11">
+                <div class="input-group search-container" style="margin-bottom: 10px; width: 100%;">
+                    <input id="searchbox" type="text" class="form-control" placeholder="<?php echo __("Enter village, amenity, shop, etc."); ?>">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                </div>
+            </div>
+        </div>
+
+        <!--div id="searchPanel" class="panel panel-default collapsible-panel">
             <div class="panel-heading">
                 <a href="#" onclick="javascript:toggleDirectionsPanel('searchPanel')"><?php echo __("Find places"); ?></a>
             </div>
@@ -19,25 +34,81 @@
                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
                 </div>
             </div>
-        </div>
+        </div-->
 
-        <div id="directionsPanel" class="panel panel-default collapsible-panel">
+        <!--div id="directionsPanel" class="panel panel-default collapsible-panel">
             <div class="panel-heading">
                 <a href="#" onclick="javascript:toggleDirectionsPanel('directionsPanel')">Get directions</a>
             </div>
             <div class="panel-body hidden">
                 <div class="input-group search-container" style="margin-bottom: 10px; width: 100%;">
-                    <input id="searchbox" type="text" class="form-control" placeholder="<?php echo __("Search places"); ?>">
+                    <input id="start-input" type="text" class="form-control" placeholder="<?php echo __("Search places"); ?>">
                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default startmarker" type="button">Go!</button>
+                    </span>
                 </div>
                 <div class="input-group search-container" style="margin-bottom: 10px; width: 100%;">
-                    <input id="searchbox" type="text" class="form-control" placeholder="<?php echo __("Search places"); ?>">
+                    <input id="end-input" type="text" class="form-control" placeholder="<?php echo __("Search places"); ?>">
                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default endmarker" type="button">&nbsp;</button>
+                    </span>
                 </div>
+            </div>
+        </div-->
+
+        <div class="row">
+            <div class="col-md-11">
+                <h4>Get directions</h4>
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-11">
+                <div class="input-group search-container" style="margin-bottom: 10px; width: 100%;">
+                    <input id="start-input" type="text" class="form-control" placeholder="<?php echo __("Search places"); ?>">
+                    <!--span class="input-group-addon"><i class="fa fa-search"></i></span-->
+                    <span class="input-group-btn">
+                        <button class="btn btn-default startmarker" type="button">
+                            <?php
+                            echo $this->Html->image("startmarker-icon.png", array(
+                                "width" => 10,
+                                "height" => 16,
+                                "alt" => __("Add start marker")
+                            ));
+                            ?>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-11">
+                <div class="input-group search-container" style="margin-bottom: 10px; width: 100%;">
+                    <input id="end-input" type="text" class="form-control" placeholder="<?php echo __("Search places"); ?>">
+                       <!--span class="input-group-addon"><i class="fa fa-search"></i></span-->
+                    <span class="input-group-btn">
+                        <button class="btn btn-default endmarker" type="button">
+                            <?php
+                            echo $this->Html->image("endmarker-icon.png", array(
+                                "width" => 10,
+                                "height" => 16,
+                                "alt" => __("Add end marker")
+                            ));
+                            ?>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- Clear button -->
+        <div class="row">
+            <div class="col-md-11">
+                <button type="button" class="btn btn-default" id="clear-button">
+                    <i class="fa fa-eraser"></i>&nbsp;&nbsp;Clear</button>
+            </div>
+        </div>
     </div>
+
     <div class="col-sm-9 col-lg-9" id="map">
         <!--div id="loading" style="display: block;">
             <div class="loading-indicator">
@@ -53,58 +124,58 @@
 
 <?php
 // Custom icon fonts
-echo $this->Html->css(array("customfonts.css", "mapnik-icons.css", "map.css"));
+                            echo $this->Html->css(array("customfonts.css", "mapnik-icons.css", "map.css"));
 // Include jquery and bootstrap JavaScript file
-echo $this->Html->script(array('jquery-1.10.2.min.js', 'bootstrap-3.0.3/bootstrap.min.js', 'typeahead.bundle.min.js', 'leaflet-0.5.1/leaflet.js'));
+                            echo $this->Html->script(array('jquery-1.10.2.min.js', 'bootstrap-3.0.3/bootstrap.min.js', 'typeahead.bundle.min.js', 'leaflet-0.5.1/leaflet.js'));
 
-if ($lang == "lo") {
-    $osmtoolsUrl = "http://{s}.laostile.osm-tools.org/osm_th/{z}/{x}/{y}.png";
-} else {
-    $osmtoolsUrl = "http://{s}.laostile.osm-tools.org/osm_en/{z}/{x}/{y}.png";
-}
+                            if ($lang == "lo") {
+                                $osmtoolsUrl = "http://{s}.laostile.osm-tools.org/osm_th/{z}/{x}/{y}.png";
+                            } else {
+                                $osmtoolsUrl = "http://{s}.laostile.osm-tools.org/osm_en/{z}/{x}/{y}.png";
+                            }
 
-$scriptBlock = "var osmtoolsUrl = \"$osmtoolsUrl\";";
-$scriptBlock .= "var initLang='$lang';";
-$scriptBlock .= "var initCenter=new L.LatLng($lat, $lng);";
-if (!empty($mlat) && !empty($mlng)) {
-    $scriptBlock .= "var initMarker=new L.LatLng($mlat, $mlng);";
-} else {
-    $scriptBlock .= "var initMarker=null;";
-}
-$scriptBlock .= "var initZoom=$zoom;";
+                            $scriptBlock = "var osmtoolsUrl = \"$osmtoolsUrl\";";
+                            $scriptBlock .= "var initLang='$lang';";
+                            $scriptBlock .= "var initCenter=new L.LatLng($lat, $lng);";
+                            if (!empty($mlat) && !empty($mlng)) {
+                                $scriptBlock .= "var initMarker=new L.LatLng($mlat, $mlng);";
+                            } else {
+                                $scriptBlock .= "var initMarker=null;";
+                            }
+                            $scriptBlock .= "var initZoom=$zoom;";
 
 
-if (!empty($startCoords)) {
-    $scriptBlock .= "var initStart=new L.LatLng($startCoords[0], $startCoords[1]);";
-} else {
-    $scriptBlock .= "var initStart=null;";
-}
-if (!empty($destCoords)) {
-    $scriptBlock .= "var initDest=new L.LatLng($destCoords[0], $destCoords[1]);";
-} else {
-    $scriptBlock .= "var initDest=null;";
-}
-if (!empty($viaCoords) && count($viaCoords) > 0) {
-    $scriptBlock .= "var initVias=[";
-    for ($i = 0; $i < count($viaCoords); $i++) {
-        $viaCoord = $viaCoords[$i];
-        $scriptBlock .= "new L.LatLng($viaCoord[0], $viaCoord[1])";
-        if ($i < (count($viaCoords) - 1)) {
-            $scriptBlock .= ",";
-        }
-    }
-    $scriptBlock .= "];";
-} else {
-    $scriptBlock .= "var initVias=null;";
-}
-$scriptBlock .= "\n";
+                            if (!empty($startCoords)) {
+                                $scriptBlock .= "var initStart=new L.LatLng($startCoords[0], $startCoords[1]);";
+                            } else {
+                                $scriptBlock .= "var initStart=null;";
+                            }
+                            if (!empty($destCoords)) {
+                                $scriptBlock .= "var initDest=new L.LatLng($destCoords[0], $destCoords[1]);";
+                            } else {
+                                $scriptBlock .= "var initDest=null;";
+                            }
+                            if (!empty($viaCoords) && count($viaCoords) > 0) {
+                                $scriptBlock .= "var initVias=[";
+                                for ($i = 0; $i < count($viaCoords); $i++) {
+                                    $viaCoord = $viaCoords[$i];
+                                    $scriptBlock .= "new L.LatLng($viaCoord[0], $viaCoord[1])";
+                                    if ($i < (count($viaCoords) - 1)) {
+                                        $scriptBlock .= ",";
+                                    }
+                                }
+                                $scriptBlock .= "];";
+                            } else {
+                                $scriptBlock .= "var initVias=null;";
+                            }
+                            $scriptBlock .= "\n";
 
-echo $this->Html->scriptBlock($scriptBlock);
+                            echo $this->Html->scriptBlock($scriptBlock);
 
-$date = date_create();
-if (Configure::read("debug") == 0) {
-    echo $this->Html->script("map.min.js");
-} else {
-    echo $this->Html->script("map.js?_dc=" . date_timestamp_get($date));
-}
+                            $date = date_create();
+                            if (Configure::read("debug") == 0) {
+                                echo $this->Html->script("map.min.js");
+                            } else {
+                                echo $this->Html->script("map.js?_dc=" . date_timestamp_get($date));
+                            }
 ?>

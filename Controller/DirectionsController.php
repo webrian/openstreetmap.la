@@ -16,6 +16,8 @@ class DirectionsController extends AppController {
                     'path' => dirname(APP) . DS . "app" . DS . "tmp" . DS . "logs" . DS
                 ));
 
+        $this->layout = "empty";
+
         // Get the start, destination and via points as geohashs
         $geohash = new Geohash();
         $start = $geohash->decode($this->request->query['start']);

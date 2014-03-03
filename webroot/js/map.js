@@ -47,7 +47,7 @@ L.StartIcon = L.Icon.extend({
         iconAnchor: new L.Point(12, 41),
         iconSize: new L.Point(25, 41),
         iconUrl: '/img/startmarker.png',
-        shadowUrl: '/lib/leaflet-0.4.4/dist/images/marker-shadow.png'
+        shadowUrl: '/js/leaflet-0.5.1/images/marker-shadow.png'
     }
 });
 
@@ -56,7 +56,18 @@ L.EndIcon = L.Icon.extend({
         iconAnchor: new L.Point(12, 41),
         iconSize: new L.Point(25, 41),
         iconUrl: '/img/endmarker.png',
-        shadowUrl: '/lib/leaflet-0.4.4/dist/images/marker-shadow.png'
+        shadowUrl: '/js/leaflet-0.5.1/images/marker-shadow.png'
+    }
+});
+
+L.ViaIcon = L.Icon.extend({
+    options: {
+        iconUrl: '/img/viamarker.png',
+        shadowUrl: '/img/viamarker-shadow.png',
+        iconSize: new L.Point(12, 12),
+        shadowSize: new L.Point(12, 12),
+        iconAnchor: new L.Point(6, 6),
+        popupAnchor: new L.Point(-6, -6)
     }
 });
 
@@ -96,6 +107,253 @@ function clearPlaceMarker() {
     $("#searchbox").val("");
 }
 
+/**
+     * @param latLng L.LatLng Position of tne marker
+     * @param recenter Boolean
+     */
+function addStartMarker(latLng, recenter){
+    if(startmarker) {
+        map.removeLayer(startmarker);
+    }
+
+    // Project the coordinates
+    startmarker = new L.OsmMarker(latLng, {
+        ctrl: statusControl,
+        icon: new L.StartIcon()
+    });
+    startmarker.on('dblclick', function(evt){
+        clearStartMarker();
+        doRouting(false);
+    });
+    startmarker.on('dragend', function(evt){
+        // Never recenter on dragend event
+        doRouting(false);
+        // Update the start combo field after dragend
+        $("input#start-input").val(setLocationValue(this.getLatLng()));
+    });
+    map.addLayer(startmarker);
+    // Don't zoom to the route when adding the marker
+    // by button
+    doRouting(recenter);
+}
+
+function clearStartMarker(){
+    if(startmarker) {
+        map.removeLayer(startmarker);
+    }
+    startmarker = null;
+    //startCombo.clearValue();
+    $("input#start-input").val();
+}
+
+function addEndMarker(latLng, recenter){
+    if(endmarker) {
+        map.removeLayer(endmarker);
+    }
+    // Instantiate the end marker
+    endmarker = new L.OsmMarker(latLng, {
+        ctrl: statusControl,
+        icon: new L.EndIcon()
+    });
+    endmarker.on('dblclick', function(evt){
+        clearEndMarker();
+        doRouting(false);
+    });
+    endmarker.on('dragend', function(evt){
+        // Never recenter on dragend event
+        doRouting(false);
+        // Update the end combobox after dragend
+        $("input#end-input").val(setLocationValue(this.getLatLng()));
+    });
+    map.addLayer(endmarker);
+    // Don't zoom to the route when adding the marker
+    // by button
+    doRouting(recenter);
+}
+
+function clearEndMarker(){
+    if(endmarker) {
+        map.removeLayer(endmarker);
+    }
+    endmarker = null;
+    endCombo.clearValue();
+}
+
+function addViaMarker(latLng){
+    var viaMarker = new L.OsmMarker(latLng, {
+        ctrl: statusControl,
+        draggable: true,
+        icon: new L.ViaIcon()
+    });
+    viaMarker.on('dragend', function(evt){
+        doRouting(false);
+    });
+    viaMarker.on('dblclick', function(evt){
+        viamarkers.remove(this);
+        map.removeLayer(this);
+        doRouting(false);
+    });
+    viamarkers.push(viaMarker);
+    map.addLayer(viaMarker);
+    doRouting(false);
+}
+
+function clearViaMarkers(){
+    for(var i = 0; i < viamarkers.length; i++){
+        map.removeLayer(viamarkers[i]);
+    }
+    viamarkers = new Array();
+}
+
+/**
+ * Returns a comma separated string with geohashs
+ * @type String
+ */
+function getViaHashs(){
+    var viaHashs = new Array();
+    for(var i = 0; i < viamarkers.length; i++){
+        viaHashs.push(Fgh.encode(viamarkers[i].getLatLng().lat, viamarkers[i].getLatLng().lng, 52));
+    }
+    return viaHashs.join(',');
+}
+
+function doRouting(recenter){
+    // Check if the start marker and the end marker are NOT null
+    if(startmarker && endmarker) {
+
+        // Request the server asynchronously
+        $.ajax({
+            /*failure: function(response){
+                var failureMsg = '<h2>' + Ext.ux.ts.tr('No route found')
+                + '</h2>' + Ext.ux.ts.tr('Server is currently unreachable or its answer is invalid.')
+                Ext.Msg.alert(Ext.ux.ts.tr('Not found'), failureMsg);
+            },*/
+            method: 'GET',
+            data: {
+                start: Fgh.encode(startmarker.getLatLng().lat, startmarker.getLatLng().lng, 52),
+                dest: Fgh.encode(endmarker.getLatLng().lat, endmarker.getLatLng().lng, 52),
+                via: getViaHashs()
+            },
+            success: function(response){
+                // Remove first all existing features
+                if(route) {
+                    map.removeLayer(route);
+                }
+
+                console.log(response);
+
+                // Extract the route information from the response
+                var responseObj = Ext.decode(response.responseText);
+
+                var coords = Ext.ux.osrm.RoutingGeometry.show(responseObj);
+
+                // Create an array with LatLng coordinates
+                var latlngs = []
+                Ext.each(coords, function(item, index, allItems){
+                    latlngs.push(new L.LatLng(item[0],item[1]));
+                });
+
+                // Create the new layer and add it to the map
+                route = new L.Polyline(latlngs, {
+                    color: 'blue'
+                });
+                route.on('mouseover', function(e){
+                    statusControl.setText(Ext.ux.ts.tr('Click to add new via point'));
+                });
+                route.on('mouseout', function(e){
+                    statusControl.setText('');
+                });
+                route.on('click', function(e){
+                    addViaMarker(e.latlng);
+                });
+                map.addLayer(route);
+
+                // Recenter the map if requested
+                if(recenter){
+                    map.fitBounds(new L.LatLngBounds(latlngs));
+                }
+
+            /*
+
+                // Update the route instructions panel
+                var instructionsDiv = dh.overwrite('route-result-panel', {
+                    tag: 'table',
+                    cls: 'result-table'
+                });
+                var instructions = responseObj.route_instructions
+                var total_distance = 0;
+
+                // Loop all routing steps
+                for (var i = 0; i < instructions.length; i++){
+                    // To differentiate better the steps highlight even and odd
+                    // rows. Even rows get a darker background.
+                    var cls = (i%2==0) ? 'route-instructions-even' : '';
+
+                    // Get the street instructions, if the street name is missing
+                    // or empty, drop also the "on".
+                    var street = (instructions[i][1] != '') ? "on " + instructions[i][1] : "";
+
+                    // Get the distance of the current step and format it readable
+                    var step_distance = instructions[i][2];
+                    // Parse the step distance as integer to prevent strint concatenation
+                    total_distance += parseInt(step_distance);
+                    var dist = step_distance > 1000 ? Number(parseInt(step_distance/10)/100) + " km" : step_distance + " m";
+
+                    // Append the current row to the template
+                    routeInstructionsTpl.append(instructionsDiv, [(i+1), cls, instructions[i][6], street, dist]);
+                }
+
+                var credits = dh.append(instructionsDiv, {
+                    tag: 'tr',
+                    id: 'credit-row',
+                    children: [{
+                        'class': 'route-credit',
+                        colspan: 3,
+                        children: [{
+                            html: Ext.ux.ts.tr('Routing powered by '),
+                            tag: 'span'
+                        },{
+                            'class': 'external',
+                            href: 'http://project-osrm.org/',
+                            html: 'OSRM',
+                            tag: 'a'
+                        }],
+                        tag: 'td'
+                    }]
+                } );
+
+                // Calculate hours and minutes from the total time in seconds
+                var total_time = responseObj.route_summary.total_time;
+                var total_hours = parseInt(total_time / 3600);
+                var total_mins = parseInt(((total_time / 3600) - total_hours) * 60);
+
+                // Total distance in meters
+                //var total_distance = responseObj.features[0].properties.total_distance;
+                var total_km = Number(parseInt(total_distance/10)/100);
+
+                // Create the summary division
+                var summaryDiv = dh.overwrite('route-summary-panel', {
+                    tag: 'div'
+                });
+                routeSummaryTpl.append(summaryDiv, [total_km, total_hours, total_mins]);*/
+            },
+            url: '/directions'
+
+        });
+    }
+    // If end and/or start marker are null, remove the route from the map
+    else {
+        clearViaMarkers();
+        // Delete the routing summary by just overwriting it
+        /*dh.overwrite('route-summary-panel', '');
+        // Delete also the routing instructions by just overwriting it
+        dh.overwrite('route-result-panel', '');*/
+        if(route) {
+            map.removeLayer(route);
+        }
+    }
+}
+
 function toggleDirectionsPanel(id){
     var p = $("#" + id).find(".panel-body");
     if(p.hasClass("hidden")){
@@ -105,7 +363,7 @@ function toggleDirectionsPanel(id){
     }
 }
 
-var map, placemarker;
+var map, placemarker, startmarker, endmarker, viamarkers = [], route;
 
 $(document).ready(function() {
     $("[rel=tooltip]").tooltip();
@@ -221,6 +479,20 @@ $("#searchbox").on("typeahead:selected", function(event, record){
     var c = Fgh.decode(record.hash);
     var coords = new L.LatLng(c.lat, c.lon);
     addPlaceMarker(coords, true);
+});
+
+$("button.startmarker").on("click", function(event){
+    // Add the startmarker to the center of the map
+    addStartMarker(map.getCenter(), false);
+    // and update the start combobox
+    $(this).val(setLocationValue(map.getCenter()));
+});
+
+$("button.endmarker").on("click", function(event){
+    // Add the startmarker to the center of the map
+    addEndMarker(map.getCenter(), false);
+    // and update the start combobox
+    $(this).val(setLocationValue(map.getCenter()));
 });
 
 /*
