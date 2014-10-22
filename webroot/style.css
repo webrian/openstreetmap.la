@@ -31,6 +31,25 @@ a.external {
     padding: 0 5px;
     font: 13px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
+h1 {
+    font-size: 18px;
+}
+#sidepanel-header > div {
+    font-size: 16px;
+}
+/* ExtJS overwrites */
+.x-tab-strip span.x-tab-strip-text {
+    font-size: 16px;
+}
+.x-btn button {
+    font-size: 16px;
+}
+.x-small-editor .x-form-field {
+    font-size: 16px;
+}
+.x-form-field {
+    font-size: 16px;
+}
 /* route instructions result table */
 .result-table {
     width: 100%;
