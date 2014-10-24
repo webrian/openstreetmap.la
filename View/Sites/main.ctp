@@ -72,7 +72,14 @@ echo "Ext.namespace('Ext.ux');";
 echo "Ext.ux.activeTab = '$tab';\n";
 ?>
         </script>
-        <script type="text/javascript" src="/main.js"></script>
+<?php
+    $date = date_create();
+    if (Configure::read("debug") == 0) {
+        echo $this->Html->script("/main.js");
+    } else {
+        echo $this->Html->script("/main-devel.js?_dc=" . date_timestamp_get($date));
+    }
+?>
     </head>
     <body>
         <div id="sidepanel-header" style="text-align: center; padding: 5px; padding-top: 10px;">
