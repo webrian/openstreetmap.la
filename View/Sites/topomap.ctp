@@ -15,10 +15,10 @@
         <script type="text/javascript">
 
         var map = L.map('map').setView([18, 102], 6);
-        L.tileLayer('/tms/1.0.0/landsat8/{z}/{x}/{y}.jpeg',
+        L.tileLayer('/tms/1.0.0/topomap/{z}/{x}/{y}.jpeg',
         {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © Landsat 8',
-    maxZoom: 14,
+    maxZoom: 16,
     tms: true
 }).addTo(map);
         </script>

@@ -231,6 +231,10 @@ class SitesController extends AppController {
 	return;
     }
 
+    public function topomap() {
+        return;
+    }
+
 }
 
 ?>
