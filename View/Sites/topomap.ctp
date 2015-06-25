@@ -17,7 +17,7 @@
         var map = L.map('map').setView([18, 102], 6);
         L.tileLayer('/tms/1.0.0/topomap/{z}/{x}/{y}.jpeg',
         {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © Landsat 8',
+    attribution: 'Elevation model &copy; <a href="http://www2.jpl.nasa.gov/srtm/">SRTM</a>, Maps &copy; US Army Map Service, Series 7015',
     maxZoom: 16,
     tms: true
 }).addTo(map);
