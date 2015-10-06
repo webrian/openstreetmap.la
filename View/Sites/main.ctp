@@ -83,7 +83,7 @@ echo "Ext.ux.activeTab = '$tab';\n";
 
     <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
     <script type="text/javascript">
-        window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience.","dismiss":"Got it!","learnMore":"Read more »","link":"/cookiepolicy",
+        window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience.","dismiss":"I accept","learnMore":"Read more »","link":"<?php echo $this->Html->url("/privacy"); ?>",
  <?php
     if (Configure::read("debug") == 0) {
         echo '"theme":"light-floating.min"';

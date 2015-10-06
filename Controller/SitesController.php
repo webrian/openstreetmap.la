@@ -230,6 +230,12 @@ class SitesController extends AppController {
     public function landsat8() {
 	return;
     }
+    
+    public function privacy() {
+        // Set the content type to plain text
+        $this->response->type('text/plain');
+        return;
+    }
 
 }
 

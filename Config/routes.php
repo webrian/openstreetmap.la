@@ -69,6 +69,10 @@ Router::connect('/tms/1.0.0/:layer/:zoom/:column/:row.:format',
 Router::connect('/landsat8',
                array('controller' => 'sites', 'action' => 'landsat8')
 );
+Router::connect('/privacy',
+               array('controller' => 'sites', 'action' => 'privacy')
+);
+
 
 
 /**
