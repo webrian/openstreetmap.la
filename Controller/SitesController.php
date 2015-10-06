@@ -230,6 +230,10 @@ class SitesController extends AppController {
     public function landsat8() {
 	return;
     }
+
+    public function topomap() {
+        return;
+    }
     
     public function privacy() {
         // Set the content type to plain text

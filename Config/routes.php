@@ -51,9 +51,6 @@ Router::connect('/', array('controller' => 'sites', 'action' => 'main'));
 Router::connect('/places.xml', array('controller' => 'places', 'action' => 'opensearchdescription'));
 
 // Define the routes for the Tile Map Service
-Router::connect('/tms/services/root.xml',
-               array('controller' => 'tms', 'action' => 'index')
-);
 Router::connect('/tms/1.0.0',
                array('controller' => 'tms', 'action' => 'tilemapservice')
 );
@@ -69,11 +66,12 @@ Router::connect('/tms/1.0.0/:layer/:zoom/:column/:row.:format',
 Router::connect('/landsat8',
                array('controller' => 'sites', 'action' => 'landsat8')
 );
+Router::connect('/topomap',
+               array('controller' => 'sites', 'action' => 'topomap')
+);
 Router::connect('/privacy',
                array('controller' => 'sites', 'action' => 'privacy')
 );
-
-
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
