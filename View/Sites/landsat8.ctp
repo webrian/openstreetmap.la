@@ -8,6 +8,7 @@
         <style type="text/css">
             #map { right: 10px; top: 10px; left: 10px; bottom: 10px; position: absolute; }
         </style>
+<?php echo $this->element("/cookieconsent"); ?>
     </head>
     <body>
         <div id="map"></div>
