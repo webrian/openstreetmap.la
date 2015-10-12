@@ -1,5 +1,10 @@
 openstreetmap.la
 ================
+- - -
+\*\***discontinued**\*\*
+
+Code has been ported to CakePHP 3.x and development continues in repository [webrian/www.openstreetmap.la](https://github.com/webrian/www.openstreetmap.la).
+- - -
 
 Resources to translate used on [openstreetmap.la](http://www.openstreetmap.la).
 
